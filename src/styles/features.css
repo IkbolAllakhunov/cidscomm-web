@@ -667,6 +667,7 @@
   color: #a6a6a6;
   font-size: 10px;
   font-weight: 500;
+  text-transform: lowercase;
 }
 
 .calendar-grid {
@@ -685,6 +686,10 @@
 .calendar-day.is-empty {
   background: transparent;
   cursor: default;
+}
+
+.calendar-day.is-weekend {
+  color: #ec2a4d;
 }
 
 .calendar-day.is-selected {
@@ -712,15 +717,12 @@
   padding: 6px 8px;
   border: 0;
   border-radius: 18px;
-  background: #bcecf7;
+  background: #c1f2ff;
   color: var(--kc-text-primary);
   font: inherit;
   text-align: left;
   cursor: pointer;
 }
-
-.calendar-child-row.status-row-absent { background: #f3d1d1; }
-.calendar-child-row.status-row-late { background: #ffe3a7; }
 
 .calendar-child-avatar {
   display: grid;
@@ -749,10 +751,13 @@
   padding: 7px 8px;
   border-radius: 14px;
   background: rgba(45, 45, 45, 0.78);
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 9px;
   white-space: nowrap;
 }
+
+.calendar-child-status.status-present { background: var(--kc-orange); color: #fff; }
+.calendar-child-status.status-late { background: var(--kc-accent-yellow); color: var(--kc-text-primary); }
 
 .calendar-child-status i { font-size: 10px; }
 

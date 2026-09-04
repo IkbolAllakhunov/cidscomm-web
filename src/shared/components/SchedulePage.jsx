@@ -17,7 +17,11 @@ export default function SchedulePage() {
 
   return (
     <div className="screen">
-      <h1>Расписание</h1>
+      <div className="day-schedule-page-header">
+        <h1>Занятия</h1>
+      </div>
+
+      <WeeklyScheduleList />
 
       {notes.length > 0 && (
         <div className="notes-block">
@@ -35,8 +39,6 @@ export default function SchedulePage() {
           ))}
         </div>
       )}
-
-      <WeeklyScheduleList />
     </div>
   );
 }

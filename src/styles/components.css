@@ -763,41 +763,128 @@
   flex-shrink: 0;
 }
 
-/* --- Schedule --- */
-.weekly-schedule {
+/* --- Day schedule (аналог экрана «Занятия» из Figma) --- */
+.day-schedule-page-header {
+  margin-bottom: 14px;
+}
+
+.day-schedule-tabs {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-.schedule-day-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 8px;
+.day-schedule-tab {
+  border: 0;
+  border-radius: 16px;
+  padding: 8px 14px;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: var(--kc-card-shadow);
+  cursor: pointer;
 }
 
-.schedule-item {
+.day-schedule-tab.is-active {
+  background: var(--kc-orange);
+  color: #fff;
+}
+
+.day-schedule-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--tg-secondary-bg);
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--kc-orange);
+  border-radius: 20px;
+  padding: 10px 16px;
+  margin-bottom: 14px;
+  color: #fff;
 }
 
-.schedule-item i {
-  color: var(--tg-hint);
-  font-size: 16px;
+.day-schedule-nav {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.18);
+  color: #fff;
+  cursor: pointer;
 }
 
-.schedule-item-time {
-  font-weight: 600;
-  font-size: 13px;
-  color: var(--tg-hint);
-  min-width: 42px;
+.day-schedule-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
-.schedule-item-subject {
+.day-schedule-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.day-schedule-heading strong {
   font-size: 14px;
+  font-weight: 700;
+}
+
+.day-schedule-heading span {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.day-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.day-schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--kc-surface-warm);
+}
+
+.day-schedule-subject {
+  font-size: 13px;
+  color: var(--kc-text-primary);
+}
+
+.day-schedule-dash {
+  flex: 1;
+  border-bottom: 1px dashed var(--kc-text-secondary);
+  opacity: 0.4;
+  min-width: 12px;
+}
+
+.day-schedule-time {
+  font-size: 12px;
+  color: var(--kc-text-secondary);
+  white-space: nowrap;
+}
+
+.day-schedule-remove {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--kc-text-secondary);
+  cursor: pointer;
+}
+
+.schedule-notes-title {
+  margin-top: 4px;
 }
 
 .notes-block {
@@ -847,10 +934,6 @@
 
 .full-width {
   width: 100%;
-}
-
-.schedule-weekly-btn {
-  margin-bottom: 16px;
 }
 
 /* --- Welcome screen --- */

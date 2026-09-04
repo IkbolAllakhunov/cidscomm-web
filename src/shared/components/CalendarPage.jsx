@@ -24,6 +24,10 @@ function getMonthCells(year, month) {
   });
 }
 
+function isWeekendColumn(index) {
+  return index % 7 >= 5;
+}
+
 function getStatus(child, dateKey) {
   const date = new Date(`${dateKey}T12:00:00`);
   const day = date.getDay();
@@ -128,7 +132,7 @@ export default function CalendarPage() {
           {monthCells.map((day, index) => (
             <span
               key={`${index}-${day}`}
-              className={`calendar-day ${day === selectedDay ? 'is-selected' : ''} ${!day ? 'is-empty' : ''}`}
+              className={`calendar-day ${day === selectedDay ? 'is-selected' : ''} ${!day ? 'is-empty' : ''} ${day && isWeekendColumn(index) ? 'is-weekend' : ''}`}
               onClick={() => day && setSelectedDay(day)}
             >
               {day}

@@ -196,34 +196,33 @@ export const messages = [
   },
 ];
 
-// weeklySchedule: статичное расписание занятий по дням недели (одно на сад,
-// как было в schedule_page.dart у родителя — там оно было захардкожено).
+// weeklySchedule: распорядок дня по дням недели (один на сад), портирован
+// по макету Figma «Занятия» — полный день с 8:00 до 19:45. Только утренние
+// и дневное занятие меняются по дням, остальной распорядок (завтрак,
+// прогулки, обед, полдник, сон, ужин, уход домой) одинаков каждый день.
+function dayRoutine(morningActivities, middayActivity) {
+  return [
+    { time: '08:00', endTime: '08:45', subject: morningActivities[0] },
+    { time: '09:00', endTime: '09:45', subject: morningActivities[1] },
+    { time: '10:00', endTime: '10:45', subject: morningActivities[2] },
+    { time: '11:00', endTime: '11:45', subject: 'Завтрак' },
+    { time: '12:00', endTime: '12:45', subject: 'Прогулка' },
+    { time: '13:00', endTime: '13:45', subject: middayActivity },
+    { time: '14:00', endTime: '14:45', subject: 'Обед' },
+    { time: '15:00', endTime: '15:45', subject: 'Прогулка' },
+    { time: '16:00', endTime: '16:45', subject: 'Полдник' },
+    { time: '17:00', endTime: '17:45', subject: 'Дневной сон' },
+    { time: '18:00', endTime: '18:45', subject: 'Ужин' },
+    { time: '19:00', endTime: '19:45', subject: 'Уход домой' },
+  ];
+}
+
 export const weeklySchedule = [
-  { day: 'Понедельник', items: [
-    { time: '09:00', subject: 'Музыка' },
-    { time: '10:00', subject: 'Рисование' },
-    { time: '11:00', subject: 'Прогулка' },
-  ] },
-  { day: 'Вторник', items: [
-    { time: '09:00', subject: 'Математика' },
-    { time: '10:00', subject: 'Игра' },
-    { time: '11:00', subject: 'Чтение' },
-  ] },
-  { day: 'Среда', items: [
-    { time: '09:00', subject: 'Спорт' },
-    { time: '10:00', subject: 'Лепка' },
-    { time: '11:00', subject: 'Танцы' },
-  ] },
-  { day: 'Четверг', items: [
-    { time: '09:00', subject: 'Логика' },
-    { time: '10:00', subject: 'Поделки' },
-    { time: '11:00', subject: 'Сказки' },
-  ] },
-  { day: 'Пятница', items: [
-    { time: '09:00', subject: 'Прогулка' },
-    { time: '10:00', subject: 'Флешмоб' },
-    { time: '11:00', subject: 'Свободное время' },
-  ] },
+  { day: 'Понедельник', items: dayRoutine(['Чтение', 'Рисование', 'Речевая деятельность'], 'Занятия') },
+  { day: 'Вторник', items: dayRoutine(['Математика', 'Музыка', 'Игра'], 'Логика') },
+  { day: 'Среда', items: dayRoutine(['Спорт', 'Лепка', 'Танцы'], 'Занятия') },
+  { day: 'Четверг', items: dayRoutine(['Логика', 'Поделки', 'Сказки'], 'Занятия') },
+  { day: 'Пятница', items: dayRoutine(['Чтение', 'Флешмоб', 'Свободное время'], 'Занятия') },
 ];
 
 // scheduleNotes: заметки воспитателя на конкретные даты, привязанные к группе.

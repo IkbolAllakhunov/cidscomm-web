@@ -69,6 +69,7 @@ export default function TeacherHome() {
           onOpenMessages={() => setActiveIndex(4)}
           onOpenSettings={() => setActiveIndex(7)}
           onOpenGallery={() => setActiveIndex(3)}
+          onOpenAttendance={() => setActiveIndex(0)}
         />
       </div>
 
