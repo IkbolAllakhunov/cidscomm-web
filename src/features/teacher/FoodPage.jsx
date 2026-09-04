@@ -26,10 +26,10 @@ export default function FoodPage() {
   return (
     <div className="screen food-page">
       <h1>Еда</h1>
-      {MEALS.map((meal, index) => (
+      {MEALS.map((meal) => (
         <section key={meal.title} className="meal-section">
           <div className="meal-heading">{meal.title} <span>{meal.time}</span></div>
-          <div className={`meal-card ${index === 0 ? 'meal-card-highlighted' : ''}`}>
+          <div className="meal-card">
             {meal.items.map((item) => (
               <div key={item.name} className={`meal-item ${item.highlighted ? 'is-highlighted' : ''}`}>
                 <span className="meal-bullet">•</span>

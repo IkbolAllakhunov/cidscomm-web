@@ -919,11 +919,6 @@
   background: var(--kc-surface);
 }
 
-.meal-card-highlighted {
-  border: 3px solid #1697f5;
-  padding: 7px 12px;
-}
-
 .meal-item {
   display: flex;
   gap: 8px;
