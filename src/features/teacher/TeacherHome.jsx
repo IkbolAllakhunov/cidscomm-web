@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { useUser } from '../../shared/context/UserContext.jsx';
 import BottomNav from '../../shared/components/BottomNav.jsx';
 import SideNav from '../../shared/components/SideNav.jsx';
-import MobileMenu from '../../shared/components/MobileMenu.jsx';
 import TeacherSchedulePage from './TeacherSchedulePage.jsx';
 import TeacherGroupsPage from './TeacherGroupsPage.jsx';
 import TeacherGalleryPage from './TeacherGalleryPage.jsx';
@@ -30,31 +29,11 @@ const BEIGE_INDICES = new Set([0, 1, 2, 3]);
 export default function TeacherHome() {
   const { appUser, logout } = useUser();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const ActivePage = PAGES[activeIndex];
   const isBeige = BEIGE_INDICES.has(activeIndex);
 
   return (
     <div className={`app-shell ${isBeige ? 'theme-beige' : ''}`}>
-      <button
-        type="button"
-        className="mobile-menu-trigger"
-        onClick={() => setIsMenuOpen(true)}
-        aria-label="Открыть меню"
-      >
-        <i className="ti ti-menu-2" aria-hidden="true" />
-      </button>
-
-      {isMenuOpen && (
-        <MobileMenu
-          items={NAV_ITEMS}
-          activeIndex={activeIndex}
-          onChange={setActiveIndex}
-          onClose={() => setIsMenuOpen(false)}
-          accentColor="#ea784a"
-        />
-      )}
-
       {/* Боковая навигация (десктоп, 1024px+) */}
       <SideNav
         items={NAV_ITEMS}
