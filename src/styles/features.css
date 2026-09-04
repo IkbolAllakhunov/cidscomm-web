@@ -536,6 +536,10 @@
   gap: 12px;
 }
 
+.teacher-groups-list + .mini-actions-row {
+  margin-top: 20px;
+}
+
 .teacher-groups-list .group-header-card {
   margin-bottom: 0;
 }

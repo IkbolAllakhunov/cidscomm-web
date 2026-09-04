@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { useUser } from '../../shared/context/UserContext.jsx';
-import { getGroupsByTeacherId, getChildrenByGroupId, setChildAttendance, getChat } from '../../mock/repository.js';
+import { getGroupsByTeacherId, getChildrenByGroupId, setChildAttendance } from '../../mock/repository.js';
 import GroupHeaderCard from './GroupHeaderCard.jsx';
 import MiniActionCard from './MiniActionCard.jsx';
 import GroupDetailsSheet from './GroupDetailsSheet.jsx';
@@ -21,11 +21,6 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
   const myGroups = getGroupsByTeacherId(appUser.id);
   const myGroup = myGroups.find((group) => group.id === selectedGroupId) ?? myGroups[0];
   const groupChildren = myGroup ? getChildrenByGroupId(myGroup.id) : [];
-  const parentIds = [...new Set(groupChildren.map((child) => child.parentId).filter(Boolean))];
-  const unreadCount = parentIds.reduce(
-    (count, parentId) => count + getChat(appUser.id, parentId).filter((message) => message.author !== appUser.id).length,
-    0,
-  );
 
   if (openChild) {
     return <TeacherChildProfilePage child={openChild} onBack={() => setOpenChild(null)} />;
@@ -91,7 +86,7 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
       </div>
 
       <div className="mini-actions-row">
-        <MiniActionCard icon="ti-message" label="Сообщения" badge={unreadCount} onClick={onOpenMessages} />
+        <MiniActionCard icon="ti-message" label="Сообщения" onClick={onOpenMessages} />
         <MiniActionCard icon="ti-settings" label="Настройки" onClick={onOpenSettings} />
       </div>
 
