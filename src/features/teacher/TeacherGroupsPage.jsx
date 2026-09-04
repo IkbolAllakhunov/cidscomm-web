@@ -71,9 +71,6 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
     <div key={viewVersion} className="screen">
       <div className="teacher-home-topbar">
         <span>{appUser.name}</span>
-        <button type="button" className="teacher-menu-button" onClick={onOpenSettings} aria-label="Настройки воспитателя">
-          <i className="ti ti-menu-2" aria-hidden="true" />
-        </button>
       </div>
       <div className="teacher-groups-list">
         {myGroups.map((group) => {

@@ -109,7 +109,7 @@ h1 {
 
 .app-shell-content {
   flex: 1;
-  padding-bottom: 64px; /* место под bottom-nav */
+  padding-bottom: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

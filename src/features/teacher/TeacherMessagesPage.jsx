@@ -13,21 +13,23 @@ export default function TeacherMessagesPage() {
   const parentIds = [...new Set(allChildren.map((c) => c.parentId).filter(Boolean))];
   const parents = parentIds.map((id) => getUserById(id)).filter(Boolean);
 
-  const [selectedParentId, setSelectedParentId] = useState(parents[0]?.id ?? '');
+  const [selectedParentId, setSelectedParentId] = useState(null);
   const [search, setSearch] = useState('');
   const [showChatSettings, setShowChatSettings] = useState(false);
   const visibleParents = parents.filter((parent) => parent.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className="screen screen-flush">
+    <div className={`screen screen-flush ${selectedParentId ? 'chat-screen' : 'messages-screen'}`}>
       <div className="screen-title-padded">
-        <h1>Чат</h1>
-        <button type="button" className="icon-btn" onClick={() => setShowChatSettings(true)} aria-label="Настройки чата">
-          <i className="ti ti-settings" aria-hidden="true" />
-        </button>
+        <h1>Сообщения</h1>
+        {selectedParentId && (
+          <button type="button" className="icon-btn chat-back-button" onClick={() => setSelectedParentId(null)} aria-label="Назад">
+            <i className="ti ti-arrow-left" aria-hidden="true" />
+          </button>
+        )}
       </div>
 
-      <div className="chat-parent-select-wrap">
+      {!selectedParentId && <div className="chat-parent-select-wrap">
         <input
           type="search"
           className="text-input chat-search-input"
@@ -36,17 +38,7 @@ export default function TeacherMessagesPage() {
           onChange={(e) => setSearch(e.target.value)}
           aria-label="Поиск по родителям"
         />
-        <select
-          className="select-input"
-          value={selectedParentId}
-          onChange={(e) => setSelectedParentId(e.target.value)}
-        >
-          <option value="" disabled>Выберите родителя</option>
-          {visibleParents.map((p) => (
-            <option key={p.id} value={p.id}>{p.name}</option>
-          ))}
-        </select>
-      </div>
+      </div>}
 
       {selectedParentId ? (
         <ChatWindow
@@ -55,9 +47,16 @@ export default function TeacherMessagesPage() {
           isFromTeacher={true}
           enableMessageActions={true}
         />
-      ) : (
-        <p className="muted chat-empty">Нет родителей для переписки</p>
-      )}
+      ) : visibleParents.length > 0 ? (
+        <div className="message-conversation-list">
+          {visibleParents.map((parent, index) => (
+            <button key={parent.id} type="button" className={`message-conversation-item message-conversation-color-${index % 4}`} onClick={() => setSelectedParentId(parent.id)}>
+              <span><strong>{parent.name}</strong><small>Родитель группы</small></span>
+              <i className="ti ti-chevron-right" aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      ) : <p className="muted chat-empty">Нет родителей для переписки</p>}
 
       {showChatSettings && (
         <div className="modal-overlay" onClick={() => setShowChatSettings(false)}>

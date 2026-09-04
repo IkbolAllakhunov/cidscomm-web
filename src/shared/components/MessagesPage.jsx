@@ -28,7 +28,7 @@ export default function MessagesPage() {
       icon: 'ti-users-group',
     },
   ].filter(Boolean);
-  const [selectedChatId, setSelectedChatId] = useState(teacherId ?? '');
+  const [selectedChatId, setSelectedChatId] = useState(null);
   const selectedChat = conversations.find((chat) => chat.id === selectedChatId) ?? conversations[0];
 
   if (!teacherId) {
@@ -42,8 +42,15 @@ export default function MessagesPage() {
 
   return (
     <div className="screen screen-flush messages-layout">
-      <h1 className="screen-title-padded">Сообщения</h1>
-      <div className="conversation-list" aria-label="Список диалогов">
+      <div className="screen-title-padded">
+        <h1>Сообщения</h1>
+        {selectedChatId && (
+          <button type="button" className="icon-btn chat-back-button" onClick={() => setSelectedChatId(null)} aria-label="Назад">
+            <i className="ti ti-arrow-left" aria-hidden="true" />
+          </button>
+        )}
+      </div>
+      {!selectedChatId && <div className="conversation-list" aria-label="Список диалогов">
         {conversations.map((chat) => {
           const lastMessage = getLastMessage(appUser.id, chat.id);
           return (
@@ -62,7 +69,7 @@ export default function MessagesPage() {
             </button>
           );
         })}
-      </div>
+      </div>}
       {selectedChat && (
         <div className="conversation-panel">
           <div className="conversation-panel-title">
