@@ -451,6 +451,11 @@
 .message-conversation-color-2 { border-left-color: #efb343; }
 .message-conversation-color-3 { border-left-color: #5dbdd1; }
 
+.message-conversation-group {
+  border-left-color: #7ad35b;
+  background: color-mix(in srgb, #7ad35b 12%, var(--kc-surface));
+}
+
 .chat-back-button {
   margin-left: auto;
 }
@@ -960,6 +965,11 @@
 .chat-message-actions .btn-text {
   padding: 0;
   font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.chat-message-actions .danger-text {
+  color: #ffb4b4;
 }
 
 .danger-text,

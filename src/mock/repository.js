@@ -191,6 +191,28 @@ export function getLastMessage(userId1, userId2) {
   return chat[chat.length - 1] ?? null;
 }
 
+// ---- Групповой чат (все сообщения группы видят все её участники,
+// в отличие от getChat, который матчит только пару собеседников) ----
+
+export function getGroupChat(groupId) {
+  return db.messages
+    .filter((m) => m.recipient === `group:${groupId}`)
+    .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+}
+
+export function sendGroupMessage(groupId, { author, text, isFromTeacher }) {
+  const message = {
+    id: `msg_${Date.now()}`,
+    text,
+    author,
+    recipient: `group:${groupId}`,
+    timestamp: new Date().toISOString(),
+    isFromTeacher,
+  };
+  db.messages.push(message);
+  return message;
+}
+
 export function sendMessage({ author, recipient, text, isFromTeacher }) {
   const message = {
     id: `msg_${Date.now()}`,

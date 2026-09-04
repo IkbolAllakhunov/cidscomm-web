@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { useUser } from '../context/UserContext.jsx';
-import { getChildrenByParentId, getGroupById, getLastMessage, getUserById } from '../../mock/repository.js';
+import { getChildrenByParentId, getGroupById, getGroupChat, getLastMessage, getUserById } from '../../mock/repository.js';
 import ChatWindow from './ChatWindow.jsx';
 
 export default function MessagesPage() {
@@ -23,7 +23,9 @@ export default function MessagesPage() {
     { id: 'doctor1', title: 'Медработник садика', subtitle: 'Медицинская служба', icon: 'ti-heart' },
     group && {
       id: `group:${group.id}`,
-      title: `Родители · ${group.name}`,
+      isGroup: true,
+      groupId: group.id,
+      title: `Группа ${group.name}`,
       subtitle: 'Групповой чат',
       icon: 'ti-users-group',
     },
@@ -52,7 +54,8 @@ export default function MessagesPage() {
       </div>
       {!selectedChatId && <div className="conversation-list" aria-label="Список диалогов">
         {conversations.map((chat) => {
-          const lastMessage = getLastMessage(appUser.id, chat.id);
+          const groupMessages = chat.isGroup ? getGroupChat(chat.groupId) : null;
+          const lastMessage = chat.isGroup ? groupMessages.at(-1) : getLastMessage(appUser.id, chat.id);
           return (
             <button
               key={chat.id}
@@ -72,11 +75,15 @@ export default function MessagesPage() {
       </div>}
       {selectedChat && (
         <div className="conversation-panel">
-          <div className="conversation-panel-title">
-            <strong>{selectedChat.title}</strong>
-            <span>{selectedChat.subtitle}</span>
-          </div>
-          <ChatWindow key={selectedChat.id} myId={appUser.id} otherId={selectedChat.id} isFromTeacher={selectedChat.id === teacherId} />
+          <ChatWindow
+            key={selectedChat.id}
+            myId={appUser.id}
+            otherId={selectedChat.id}
+            isFromTeacher={selectedChat.id === teacherId}
+            header={{ title: selectedChat.title, subtitle: selectedChat.subtitle }}
+            isGroup={selectedChat.isGroup}
+            groupId={selectedChat.groupId}
+          />
         </div>
       )}
     </div>

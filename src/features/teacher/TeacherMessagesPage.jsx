@@ -1,35 +1,61 @@
 // Аналог TeacherMessagesPage из teacher_messages_page.dart.
-// Dropdown выбора родителя + чат с выбранным.
+// Список переписок (групповой чат группы + личные с родителями) + чат
+// с выбранным собеседником.
 
 import { useState } from 'react';
 import { useUser } from '../../shared/context/UserContext.jsx';
 import { getGroupsByTeacherId, getChildrenByGroupId, getUserById } from '../../mock/repository.js';
 import ChatWindow from '../../shared/components/ChatWindow.jsx';
 
+function conversationClassName(conversation, index) {
+  if (conversation.isGroup) return 'message-conversation-item message-conversation-group';
+  return `message-conversation-item message-conversation-color-${index % 4}`;
+}
+
 export default function TeacherMessagesPage() {
   const { appUser } = useUser();
   const myGroups = getGroupsByTeacherId(appUser.id);
+  const myGroup = myGroups[0];
   const allChildren = myGroups.flatMap((group) => getChildrenByGroupId(group.id));
   const parentIds = [...new Set(allChildren.map((c) => c.parentId).filter(Boolean))];
-  const parents = parentIds.map((id) => getUserById(id)).filter(Boolean);
 
-  const [selectedParentId, setSelectedParentId] = useState(null);
+  const conversations = [
+    ...(myGroup ? [{
+      id: `group:${myGroup.id}`,
+      isGroup: true,
+      groupId: myGroup.id,
+      title: `Группа ${myGroup.name}`,
+      subtitle: `${getChildrenByGroupId(myGroup.id).length} участников`,
+    }] : []),
+    ...parentIds.map((id) => {
+      const parent = getUserById(id);
+      const child = allChildren.find((c) => c.parentId === id);
+      return parent && {
+        id,
+        isGroup: false,
+        title: parent.name,
+        subtitle: child ? `Родитель · ${child.name}` : 'Родитель группы',
+      };
+    }).filter(Boolean),
+  ];
+
+  const [selectedId, setSelectedId] = useState(null);
   const [search, setSearch] = useState('');
-  const [showChatSettings, setShowChatSettings] = useState(false);
-  const visibleParents = parents.filter((parent) => parent.name.toLowerCase().includes(search.toLowerCase()));
+  const selected = conversations.find((c) => c.id === selectedId);
+  const visibleConversations = conversations.filter((c) => c.title.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className={`screen screen-flush ${selectedParentId ? 'chat-screen' : 'messages-screen'}`}>
+    <div className={`screen screen-flush ${selectedId ? 'chat-screen' : 'messages-screen'}`}>
       <div className="screen-title-padded">
         <h1>Сообщения</h1>
-        {selectedParentId && (
-          <button type="button" className="icon-btn chat-back-button" onClick={() => setSelectedParentId(null)} aria-label="Назад">
+        {selectedId && (
+          <button type="button" className="icon-btn chat-back-button" onClick={() => setSelectedId(null)} aria-label="Назад">
             <i className="ti ti-arrow-left" aria-hidden="true" />
           </button>
         )}
       </div>
 
-      {!selectedParentId && <div className="chat-parent-select-wrap">
+      {!selectedId && <div className="chat-parent-select-wrap">
         <input
           type="search"
           className="text-input chat-search-input"
@@ -40,37 +66,36 @@ export default function TeacherMessagesPage() {
         />
       </div>}
 
-      {selectedParentId ? (
+      {selected && (
         <ChatWindow
           myId={appUser.id}
-          otherId={selectedParentId}
+          otherId={selected.id}
           isFromTeacher={true}
           enableMessageActions={true}
+          header={{ title: selected.title, subtitle: selected.subtitle }}
+          isGroup={selected.isGroup}
+          groupId={selected.groupId}
         />
-      ) : visibleParents.length > 0 ? (
+      )}
+
+      {!selected && visibleConversations.length > 0 && (
         <div className="message-conversation-list">
-          {visibleParents.map((parent, index) => (
-            <button key={parent.id} type="button" className={`message-conversation-item message-conversation-color-${index % 4}`} onClick={() => setSelectedParentId(parent.id)}>
-              <span><strong>{parent.name}</strong><small>Родитель группы</small></span>
+          {visibleConversations.map((conversation, index) => (
+            <button
+              key={conversation.id}
+              type="button"
+              className={conversationClassName(conversation, index)}
+              onClick={() => setSelectedId(conversation.id)}
+            >
+              <span><strong>{conversation.title}</strong><small>{conversation.subtitle}</small></span>
               <i className="ti ti-chevron-right" aria-hidden="true" />
             </button>
           ))}
         </div>
-      ) : <p className="muted chat-empty">Нет родителей для переписки</p>}
+      )}
 
-      {showChatSettings && (
-        <div className="modal-overlay" onClick={() => setShowChatSettings(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <p className="card-label">Настройки чата</p>
-            <label className="settings-toggle-row">
-              <span>Уведомления о новых сообщениях</span>
-              <input type="checkbox" defaultChecked />
-            </label>
-            <div className="modal-actions">
-              <button type="button" className="btn-primary" onClick={() => setShowChatSettings(false)}>Готово</button>
-            </div>
-          </div>
-        </div>
+      {!selected && visibleConversations.length === 0 && (
+        <p className="muted chat-empty">Нет родителей для переписки</p>
       )}
     </div>
   );

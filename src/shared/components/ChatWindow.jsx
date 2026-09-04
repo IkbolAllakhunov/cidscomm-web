@@ -1,17 +1,27 @@
-// Аналог ChatScreen/_TeacherMessagesPageState чата. Точные цвета из оригинала:
-// "свои" сообщения — #BEE8F9, чужие — белые с мягкой тенью, фон страницы
-// bgBeige, кнопка отправки — оранжевый круг (одинаково для обеих ролей).
+// Аналог ChatScreen/_TeacherMessagesPageState чата. Точные цвета из Figma
+// (sadik, фрейм "чат" 269:195): свои сообщения — #0098be, чужие — #00728f,
+// обе стороны тёмные с белым текстом (не белый/светло-голубой, как раньше).
 
 import { useState, useRef, useEffect } from 'react';
-import { deleteMessage, getChat, sendMessage, updateMessage } from '../../mock/repository.js';
+import { deleteMessage, getChat, getGroupChat, getUserById, sendGroupMessage, sendMessage, updateMessage } from '../../mock/repository.js';
 
 function formatTime(timestamp) {
   const d = new Date(timestamp);
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
-export default function ChatWindow({ myId, otherId, isFromTeacher, enableMessageActions = false }) {
-  const [messages, setMessages] = useState(() => getChat(myId, otherId));
+export default function ChatWindow({
+  myId,
+  otherId,
+  isFromTeacher,
+  enableMessageActions = false,
+  header,
+  isGroup = false,
+  groupId,
+}) {
+  const loadMessages = () => (isGroup ? getGroupChat(groupId) : getChat(myId, otherId));
+
+  const [messages, setMessages] = useState(loadMessages);
   const [text, setText] = useState('');
   const [editingMessage, setEditingMessage] = useState(null);
   const [deletingMessage, setDeletingMessage] = useState(null);
@@ -21,16 +31,20 @@ export default function ChatWindow({ myId, otherId, isFromTeacher, enableMessage
     listEndRef.current?.scrollIntoView({ block: 'end' });
   }, [messages]);
 
+  function refreshMessages() {
+    setMessages(loadMessages());
+  }
+
   function handleSend() {
     const trimmed = text.trim();
     if (!trimmed) return;
-    sendMessage({ author: myId, recipient: otherId, text: trimmed, isFromTeacher });
-    setMessages(getChat(myId, otherId));
+    if (isGroup) {
+      sendGroupMessage(groupId, { author: myId, text: trimmed, isFromTeacher });
+    } else {
+      sendMessage({ author: myId, recipient: otherId, text: trimmed, isFromTeacher });
+    }
+    refreshMessages();
     setText('');
-  }
-
-  function refreshMessages() {
-    setMessages(getChat(myId, otherId));
   }
 
   function handleEditSave() {
@@ -43,13 +57,22 @@ export default function ChatWindow({ myId, otherId, isFromTeacher, enableMessage
 
   return (
     <div className="chat-window">
+      {header && (
+        <div className="chat-contact-card">
+          <strong>{header.title}</strong>
+          <span>{header.subtitle}</span>
+        </div>
+      )}
+
       <div className="chat-messages">
         {messages.length === 0 && <p className="muted chat-empty">Нет сообщений</p>}
         {messages.map((msg) => {
           const isMe = msg.author === myId;
+          const senderName = isGroup && !isMe ? getUserById(msg.author)?.name : null;
           return (
             <div key={msg.id} className={`chat-bubble-row ${isMe ? 'me' : ''}`}>
               <div className={`chat-bubble ${isMe ? 'chat-bubble-me' : 'chat-bubble-other'}`}>
+                {senderName && <p className="chat-bubble-sender">{senderName}</p>}
                 <p className="chat-bubble-text">{msg.text}</p>
                 <p className="chat-bubble-time">{formatTime(msg.timestamp)}</p>
                 {enableMessageActions && isMe && (
