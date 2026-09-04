@@ -10,14 +10,16 @@ import MobileMenu from '../../shared/components/MobileMenu.jsx';
 import AdminGroupsPage from './AdminGroupsPage.jsx';
 import AdminUsersPage from './AdminUsersPage.jsx';
 import AdminSettingsPage from './AdminSettingsPage.jsx';
+import PaymentPage from '../../shared/components/PaymentPage.jsx';
 
 const NAV_ITEMS = [
   { label: 'Группы', icon: 'ti-users-group' },
   { label: 'Пользователи', icon: 'ti-user-circle' },
+  { label: 'Оплата', icon: 'ti-wallet' },
   { label: 'Настройки', icon: 'ti-settings' },
 ];
 
-const PAGES = [AdminGroupsPage, AdminUsersPage, AdminSettingsPage];
+const PAGES = [AdminGroupsPage, AdminUsersPage, PaymentPage, AdminSettingsPage];
 
 export default function AdminHome() {
   const { appUser, logout } = useUser();

@@ -14,6 +14,7 @@ import ChildProfilePage from './ChildProfilePage.jsx';
 import ParentGalleryPage from './ParentGalleryPage.jsx';
 import MorePage from './MorePage.jsx';
 import CalendarPage from '../../shared/components/CalendarPage.jsx';
+import PaymentPage from '../../shared/components/PaymentPage.jsx';
 
 const NAV_ITEMS = [
   { label: 'Профиль', icon: 'ti-user' },
@@ -21,10 +22,11 @@ const NAV_ITEMS = [
   { label: 'Календарь', icon: 'ti-calendar-event' },
   { label: 'Галерея', icon: 'ti-photo' },
   { label: 'Сообщения', icon: 'ti-message' },
+  { label: 'Оплата', icon: 'ti-wallet' },
   { label: 'Ещё', icon: 'ti-dots' },
 ];
 
-const PAGES = [ChildProfilePage, SchedulePage, CalendarPage, ParentGalleryPage, MessagesPage, MorePage];
+const PAGES = [ChildProfilePage, SchedulePage, CalendarPage, ParentGalleryPage, MessagesPage, PaymentPage, MorePage];
 
 export default function ParentHome() {
   const { appUser, logout } = useUser();

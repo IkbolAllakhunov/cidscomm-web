@@ -14,7 +14,6 @@ import TeacherGalleryPage from './TeacherGalleryPage.jsx';
 import TeacherMessagesPage from './TeacherMessagesPage.jsx';
 import TeacherMorePage from './TeacherMorePage.jsx';
 import CalendarPage from '../../shared/components/CalendarPage.jsx';
-import PaymentPage from './PaymentPage.jsx';
 import FoodPage from './FoodPage.jsx';
 
 const NAV_ITEMS = [
@@ -23,14 +22,13 @@ const NAV_ITEMS = [
   { label: 'Календарь', icon: 'ti-calendar-event', iconSrc: '/images/nav-calendar.svg' },
   { label: 'Галерея', icon: 'ti-photo', iconSrc: '/images/nav-gallery.svg' },
   { label: 'Сообщения', icon: 'ti-message', iconSrc: '/images/nav-messages.svg' },
-  { label: 'Оплата', icon: 'ti-wallet', iconSrc: '/images/nav-payment.svg' },
   { label: 'Еда', icon: 'ti-bowl', iconSrc: '/images/nav-food.svg' },
   { label: 'Ещё', icon: 'ti-dots', iconSrc: '/images/nav-settings.svg' },
 ];
 
-const PAGES = [TeacherGroupsPage, TeacherSchedulePage, CalendarPage, TeacherGalleryPage, TeacherMessagesPage, PaymentPage, FoodPage, TeacherMorePage];
+const PAGES = [TeacherGroupsPage, TeacherSchedulePage, CalendarPage, TeacherGalleryPage, TeacherMessagesPage, FoodPage, TeacherMorePage];
 // bgBeige в оригинале стоит на Главной, Расписании, Галерее и Чате воспитателя
-const BEIGE_INDICES = new Set([0, 1, 2, 3, 4, 5, 6]);
+const BEIGE_INDICES = new Set([0, 1, 2, 3, 4, 5]);
 
 export default function TeacherHome() {
   const { appUser, logout } = useUser();
@@ -67,7 +65,7 @@ export default function TeacherHome() {
       <div className="app-shell-content">
         <ActivePage
           onOpenMessages={() => setActiveIndex(4)}
-          onOpenSettings={() => setActiveIndex(7)}
+          onOpenSettings={() => setActiveIndex(6)}
           onOpenGallery={() => setActiveIndex(3)}
           onOpenAttendance={() => setActiveIndex(0)}
         />
