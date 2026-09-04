@@ -500,6 +500,8 @@
 .ti-ruler-2::before { content: '\2195'; }
 .ti-layout-dashboard::before { content: '\25A6'; }
 .ti-calendar-off::before { content: '\25A6'; }
+.ti-wallet::before { content: '\25A3'; }
+.ti-bowl::before { content: '\25C7'; }
 .ti-user-plus::before { content: '+'; }
 .ti-baby-carriage::before { content: '\263A'; }
 .ti-bell::before { content: '\266B'; }

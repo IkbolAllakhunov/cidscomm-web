@@ -823,6 +823,119 @@
 .calendar-year-grid span,
 .calendar-year-grid small { color: var(--kc-text-secondary); font-size: 10px; }
 
+/* Food and payment screens from the Figma mobile states. */
+.payment-page,
+.food-page {
+  padding-top: 28px;
+}
+
+.payment-page h1,
+.food-page h1 {
+  margin-bottom: 26px;
+}
+
+.payment-group-title,
+.meal-heading {
+  min-height: 40px;
+  padding: 12px 14px;
+  border-radius: 19px;
+  background: var(--kc-orange);
+  color: #fff;
+  font-size: 11px;
+}
+
+.payment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.payment-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 5px 8px;
+  border-radius: 24px;
+  background: var(--kc-surface);
+}
+
+.payment-avatar {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #eee;
+  font-size: 20px;
+}
+
+.payment-name {
+  flex: 1;
+  color: var(--kc-text-secondary);
+  font-size: 11px;
+}
+
+.payment-status {
+  padding: 8px 10px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.payment-status-paid { background: #36ae45; }
+.payment-status-unpaid { background: #ff1616; }
+.payment-status-partial { background: #ffc94f; color: #3d3528; }
+
+.meal-section + .meal-section {
+  margin-top: 10px;
+}
+
+.meal-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meal-heading span {
+  font-size: 9px;
+}
+
+.meal-card {
+  padding: 10px 15px;
+  border-radius: 17px;
+  background: var(--kc-surface);
+}
+
+.meal-card-highlighted {
+  border: 3px solid #1697f5;
+  padding: 7px 12px;
+}
+
+.meal-item {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  color: var(--kc-text-secondary);
+  font-size: 12px;
+}
+
+.meal-bullet {
+  color: var(--kc-text-primary);
+}
+
+.meal-item.is-highlighted,
+.meal-item.is-highlighted .meal-bullet {
+  color: #f21e43;
+}
+
+.meal-item small {
+  color: inherit;
+  font-size: 9px;
+}
+
 .screen-title-padded h1 {
   margin: 0;
 }
