@@ -620,6 +620,38 @@ h1,
   box-shadow: 0 6px 20px rgba(65, 55, 42, 0.14);
 }
 
+.teacher-camera-fab .ti-camera {
+  display: block;
+  width: 18px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  font-size: 0;
+  position: relative;
+}
+
+.teacher-camera-fab .ti-camera::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.teacher-camera-fab .ti-camera::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 3px;
+  width: 7px;
+  height: 4px;
+  border-radius: 2px 2px 0 0;
+  background: currentColor;
+}
+
 .group-detail-screen {
   min-height: 100vh;
   background: var(--kc-bg-beige);
@@ -1062,19 +1094,21 @@ h1,
 
 .group-header-card {
   border-radius: 16px;
-  padding: 16px;
+  min-height: 68px;
+  padding: 10px 12px;
 }
 
 .mini-actions-row {
-  gap: 10px;
+  gap: 4px;
 }
 
 .mini-action-card {
   border-radius: 14px;
   height: 76px;
+  padding: 10px;
 }
 
-.mini-action-card i,
+.mini-action-label i,
 .group-header-avatar,
 .note-icon {
   color: var(--kc-orange);

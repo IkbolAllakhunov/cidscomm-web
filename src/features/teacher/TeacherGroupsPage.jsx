@@ -68,7 +68,7 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
         <span>{appUser.name}</span>
       </div>
       <div className="teacher-groups-list">
-        {myGroups.map((group) => {
+        {myGroups.map((group, index) => {
           const children = getChildrenByGroupId(group.id);
           return (
             <GroupHeaderCard
@@ -76,6 +76,7 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
               groupName={group.name}
               childrenCount={children.length}
               ageRange={group.ageRange}
+              illustrationIndex={index}
               onClick={() => {
                 setSelectedGroupId(group.id);
                 setShowSheet(true);
@@ -88,11 +89,6 @@ export default function TeacherGroupsPage({ onOpenMessages, onOpenSettings, onOp
       <div className="mini-actions-row">
         <MiniActionCard icon="ti-message" label="Сообщения" onClick={onOpenMessages} />
         <MiniActionCard icon="ti-settings" label="Настройки" onClick={onOpenSettings} />
-      </div>
-
-      <div className="teacher-home-hint">
-        <i className="ti ti-calendar-event" aria-hidden="true" />
-        <span>Нажмите на группу, чтобы отметить посещаемость</span>
       </div>
 
       <button type="button" className="fab teacher-camera-fab" onClick={onOpenGallery} aria-label="Добавить фото">

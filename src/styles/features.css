@@ -533,11 +533,11 @@
 
 .teacher-groups-list {
   display: grid;
-  gap: 12px;
+  gap: 4px;
 }
 
 .teacher-groups-list + .mini-actions-row {
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .teacher-groups-list .group-header-card {

@@ -377,10 +377,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--tg-secondary-bg);
-  border-radius: 12px;
+  background: var(--kc-surface);
+  border-radius: 20px;
   padding: 14px 16px;
   margin-bottom: 12px;
+  box-shadow: var(--kc-card-shadow);
 }
 
 .group-header-info {
@@ -415,6 +416,7 @@
 .group-header-name {
   font-weight: 600;
   margin: 0;
+  text-decoration: underline;
 }
 
 .group-header-count {
@@ -429,14 +431,14 @@
   height: 70px;
   place-items: end center;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
-.group-header-bear::before {
-  content: '\1F43B';
-  display: block;
-  font-size: 64px;
-  line-height: 1;
+.group-header-illustration-img {
+  max-width: 100%;
+  max-height: 90px;
+  object-fit: contain;
+  object-position: bottom;
 }
 
 .group-header-group {
@@ -467,27 +469,37 @@
 }
 
 .mini-action-card {
-  height: 70px;
+  height: 80px;
   border: none;
   border-radius: 12px;
   background: var(--tg-secondary-bg);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 4px;
+  padding: 12px 10px;
   cursor: pointer;
   color: var(--tg-text);
 }
 
-.mini-action-card i {
-  font-size: 22px;
+.mini-action-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--tg-text);
+  font-size: 11px;
+}
+
+.mini-action-label i {
+  font-size: 14px;
   color: var(--tg-hint);
 }
 
-.mini-action-card span {
-  font-size: 12px;
-  font-weight: 600;
+.mini-action-label span {
+  font-size: 11px;
+  font-weight: 500;
 }
 
 /* --- Welcome placeholder --- */
