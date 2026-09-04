@@ -13,7 +13,15 @@ export default function MobileMenu({ items, activeIndex, onChange, onClose, acce
                 onClose();
               }}
             >
-              <i className={`ti ${item.icon}`} aria-hidden="true" />
+              {item.iconSrc ? (
+                <span
+                  className="nav-icon-mask"
+                  style={{ maskImage: `url(${item.iconSrc})`, WebkitMaskImage: `url(${item.iconSrc})` }}
+                  aria-hidden="true"
+                />
+              ) : (
+                <i className={`ti ${item.icon}`} aria-hidden="true" />
+              )}
               <span>{item.label}</span>
             </button>
           ))}

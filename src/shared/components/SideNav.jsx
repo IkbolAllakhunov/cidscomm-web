@@ -20,7 +20,15 @@ export default function SideNav({ items, activeIndex, onChange, accentColor = '#
             onClick={() => onChange(index)}
             title={item.label}
           >
-            <i className={`ti ${item.icon}`} aria-hidden="true" />
+            {item.iconSrc ? (
+              <span
+                className="nav-icon-mask"
+                style={{ maskImage: `url(${item.iconSrc})`, WebkitMaskImage: `url(${item.iconSrc})` }}
+                aria-hidden="true"
+              />
+            ) : (
+              <i className={`ti ${item.icon}`} aria-hidden="true" />
+            )}
             <span className="side-nav-label">{item.label}</span>
           </button>
         ))}

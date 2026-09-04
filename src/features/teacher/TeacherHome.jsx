@@ -18,14 +18,14 @@ import PaymentPage from './PaymentPage.jsx';
 import FoodPage from './FoodPage.jsx';
 
 const NAV_ITEMS = [
-  { label: 'Главная', icon: 'ti-home' },
-  { label: 'Расписание', icon: 'ti-calendar' },
-  { label: 'Календарь', icon: 'ti-calendar-event' },
-  { label: 'Галерея', icon: 'ti-photo' },
-  { label: 'Сообщения', icon: 'ti-message' },
-  { label: 'Оплата', icon: 'ti-wallet' },
-  { label: 'Еда', icon: 'ti-bowl' },
-  { label: 'Ещё', icon: 'ti-dots' },
+  { label: 'Главная', icon: 'ti-home', iconSrc: '/images/nav-home.svg' },
+  { label: 'Расписание', icon: 'ti-calendar', iconSrc: '/images/nav-schedule.svg' },
+  { label: 'Календарь', icon: 'ti-calendar-event', iconSrc: '/images/nav-calendar.svg' },
+  { label: 'Галерея', icon: 'ti-photo', iconSrc: '/images/nav-gallery.svg' },
+  { label: 'Сообщения', icon: 'ti-message', iconSrc: '/images/nav-messages.svg' },
+  { label: 'Оплата', icon: 'ti-wallet', iconSrc: '/images/nav-payment.svg' },
+  { label: 'Еда', icon: 'ti-bowl', iconSrc: '/images/nav-food.svg' },
+  { label: 'Ещё', icon: 'ti-dots', iconSrc: '/images/nav-settings.svg' },
 ];
 
 const PAGES = [TeacherGroupsPage, TeacherSchedulePage, CalendarPage, TeacherGalleryPage, TeacherMessagesPage, PaymentPage, FoodPage, TeacherMorePage];
