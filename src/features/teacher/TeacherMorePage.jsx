@@ -67,7 +67,7 @@ export default function TeacherMorePage() {
 
       {openKey === 'support' && (
         <div className="card" style={{ marginTop: 12 }}>
-          <p className="muted">По всем вопросам пишите на support@cidscomm.app</p>
+          <p className="muted">По всем вопросам пишите на support@kidscomm.app</p>
         </div>
       )}
     </div>

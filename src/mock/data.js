@@ -1,4 +1,4 @@
-// Мок-данные Cidscomm. Структура полей повторяет модели из Flutter-версии
+// Мок-данные Kidscomm. Структура полей повторяет модели из Flutter-версии
 // (UserModel, GroupModel, ChildModel, PhotoModel, AlbumModel, MessageModel),
 // В production эти записи будут заменены данными backend.
 
@@ -11,7 +11,7 @@ export const users = [
     username: 'admin',
     passwordHash: 'admin123',
     phone: '+996700000001',
-    email: 'admin@cidscomm.kg',
+    email: 'admin@kidscomm.kg',
     isActive: true,
     createdAt: '2026-01-10T09:00:00Z',
   },
@@ -23,7 +23,7 @@ export const users = [
     username: 'teacher',
     passwordHash: 'teacher123',
     phone: '+996700000002',
-    email: 'teacher@cidscomm.kg',
+    email: 'teacher@kidscomm.kg',
     isActive: true,
     createdAt: '2026-01-10T09:00:00Z',
   },
@@ -35,7 +35,7 @@ export const users = [
     username: 'parent',
     passwordHash: 'parent123',
     phone: '+996700000003',
-    email: 'parent@cidscomm.kg',
+    email: 'parent@kidscomm.kg',
     isActive: true,
     createdAt: '2026-01-10T09:00:00Z',
   },
@@ -46,7 +46,7 @@ export const users = [
     username: 'doctor',
     passwordHash: 'doctor123',
     phone: '+996700000004',
-    email: 'doctor@cidscomm.kg',
+    email: 'doctor@kidscomm.kg',
     isActive: true,
     createdAt: '2026-01-10T09:00:00Z',
   },

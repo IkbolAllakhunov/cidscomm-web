@@ -11,7 +11,7 @@ export default function WelcomeScreen({ onNext }) {
         <p className="welcome-title">
           Добро<br />пожаловать в
         </p>
-        <p className="welcome-brand">Cidscomm</p>
+        <p className="welcome-brand">Kidscomm</p>
       </div>
 
       <div className="welcome-illustration-wrap">

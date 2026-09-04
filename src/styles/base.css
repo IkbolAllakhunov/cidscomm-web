@@ -1,5 +1,5 @@
 :root {
-  /* Палитра Cidscomm — перенесена из app_colors.dart (Flutter-версия) */
+  /* Палитра Kidscomm — перенесена из app_colors.dart (Flutter-версия) */
   --kc-primary: #2f80ed;
   --kc-primary-light: #7fdfd8;
   --kc-secondary: #6c63ff;
@@ -18,7 +18,7 @@
   --kc-error: #e74c3c;
 
   /* Telegram задаёт собственную тему через эти переменные — используем
-     их для фона/текста, но акценты берём из бренда Cidscomm выше */
+    их для фона/текста, но акценты берём из бренда Kidscomm выше */
   --tg-bg: var(--tg-theme-bg-color, var(--kc-surface));
   --tg-text: var(--tg-theme-text-color, var(--kc-text-primary));
   --tg-hint: var(--tg-theme-hint-color, var(--kc-text-secondary));

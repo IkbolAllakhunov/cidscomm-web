@@ -7,7 +7,7 @@ export default function SideNav({ items, activeIndex, onChange, accentColor = '#
     <nav className="side-nav" style={{ '--accent': accentColor }}>
       <div className="side-nav-header">
         <div className="side-nav-logo">
-          <span className="side-nav-logo-text">Cidscomm</span>
+          <span className="side-nav-logo-text">Kidscomm</span>
         </div>
       </div>
 
