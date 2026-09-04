@@ -1,0 +1,774 @@
+.welcome-screen {
+  min-height: 100vh;
+  background: #f7f1de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+}
+
+.welcome-header {
+  background: #f7f1de;
+  border-radius: 0 0 80px 80px;
+  width: 100%;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--kc-dark);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.welcome-brand {
+  font-size: 22px;
+  font-weight: 900;
+  color: #4a4a4a;
+  letter-spacing: 1px;
+  margin: 8px 0 0;
+}
+
+.welcome-illustration-wrap {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 24px 0 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-illustration {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
+
+.welcome-btn {
+  width: 100%;
+  max-width: 340px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+/* --- Child profile page (с градиентным header, как в оригинале) --- */
+.child-profile-page {
+  min-height: 100%;
+}
+
+.child-profile-header {
+  height: 140px;
+  background: linear-gradient(135deg, #6ca8ff, var(--kc-primary));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0;
+  position: relative;
+}
+
+.child-avatar-ring {
+  position: absolute;
+  bottom: -40px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child-avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--tg-secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: var(--kc-primary);
+}
+
+.child-profile-body {
+  padding-top: 76px;
+  text-align: center;
+}
+
+.child-profile-name {
+  text-align: center;
+}
+
+.child-age-chip {
+  display: inline-block;
+  background: rgba(149, 225, 211, 0.25);
+  color: var(--kc-primary);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.child-info-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.child-info-card {
+  background: color-mix(in srgb, var(--ic-color) 10%, white);
+  border: 1px solid color-mix(in srgb, var(--ic-color) 30%, white);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.child-info-card i {
+  font-size: 28px;
+  color: var(--ic-color);
+}
+
+.child-info-card-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ic-color);
+  margin: 0;
+}
+
+.child-info-card-label {
+  font-size: 12px;
+  color: var(--kc-text-secondary);
+  margin: 0;
+}
+
+.child-info-section {
+  text-align: left;
+}
+
+.child-info-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.child-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+
+.mini-action-card {
+  position: relative;
+}
+
+}
+
+.child-info-row-value {
+  font-weight: 600;
+}
+
+/* --- More page (list of settings, ListTile style) --- */
+.more-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.more-list-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 4px;
+  border: none;
+  border-bottom: 1px solid var(--tg-secondary-bg);
+  background: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--tg-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.more-list-item i:first-child {
+  font-size: 20px;
+  color: var(--kc-text-secondary);
+}
+
+.more-list-item span {
+  flex: 1;
+}
+
+.more-list-chevron {
+  font-size: 16px;
+  color: var(--tg-hint);
+}
+
+.more-list-item-danger,
+.more-list-item-danger i:first-child {
+  color: var(--kc-error);
+}
+
+.messages-layout { gap: 0; }
+
+.conversation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 16px 10px;
+}
+
+.conversation-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--kc-line);
+  border-radius: 14px;
+  background: var(--kc-surface-warm);
+  color: var(--kc-text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.conversation-item.active {
+  border-color: color-mix(in srgb, var(--kc-primary) 45%, var(--kc-line));
+  background: #f1f7f9;
+}
+
+.conversation-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e6f2f4;
+  color: var(--kc-primary);
+  font-size: 20px;
+}
+
+.conversation-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.conversation-copy strong,
+.conversation-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conversation-copy small,
+.conversation-panel-title span {
+  color: var(--kc-text-secondary);
+  font-size: 12px;
+}
+
+.conversation-chevron { color: var(--kc-text-light); }
+
+.conversation-panel {
+  display: flex;
+  min-height: 340px;
+  flex: 1;
+  flex-direction: column;
+  border-top: 1px solid var(--kc-line);
+}
+
+.conversation-panel-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  background: var(--kc-surface-warm);
+}
+
+@media (min-width: 1024px) {
+  .conversation-list { max-width: 560px; padding-left: 0; padding-right: 0; }
+  .conversation-panel {
+    max-width: 760px;
+    border: 1px solid var(--kc-line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+}
+
+.admin-groups-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.settings-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.settings-intro-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #eeeafd;
+  color: var(--kc-secondary);
+  font-size: 20px;
+}
+
+.settings-intro strong { display: block; margin-bottom: 4px; }
+.settings-intro .muted { font-size: 13px; }
+.settings-logout { width: 100%; margin-top: 14px; padding: 14px 4px; }
+
+.admin-groups-grid .card,
+.screen > .card {
+  min-width: 0;
+}
+
+.admin-groups-grid .card .list-card {
+  gap: 8px;
+}
+
+.admin-groups-grid .card .card-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-card {
+  background: var(--kc-surface-warm);
+  border: 1px solid var(--kc-line);
+  box-shadow: var(--kc-shadow);
+}
+
+.text-input,
+.select-input,
+.dropdown-card-select {
+  border: 1px solid var(--kc-line);
+  background: var(--kc-surface-warm);
+  box-shadow: var(--kc-shadow);
+}
+
+.dropdown-card {
+  border-radius: 14px;
+}
+
+.photo-grid-item,
+.teacher-photo-card {
+  background: var(--kc-surface-warm);
+}
+
+.empty-state {
+  min-height: 220px;
+  padding: 40px 20px;
+  border: 1px dashed var(--kc-line);
+  border-radius: 16px;
+  background: rgba(255, 253, 248, 0.5);
+}
+
+.child-profile-body .child-info-section {
+  background: var(--kc-surface-warm);
+  border: 1px solid var(--kc-line);
+  box-shadow: var(--kc-shadow);
+}
+
+.messages-layout .conversation-list {
+  background: transparent;
+}
+
+.messages-layout .screen-title-padded {
+  padding-top: 22px;
+}
+
+.modal {
+  border: 1px solid var(--kc-line);
+  box-shadow: 0 18px 50px rgba(65, 55, 42, 0.18);
+}
+
+@media (max-width: 639px) {
+  .teacher-home-topbar { margin-top: 4px; }
+  .group-header-illustration { width: 86px; }
+  .group-header-bear::before { font-size: 54px; }
+  .mini-action-card { min-height: 92px; }
+  .teacher-camera-fab { bottom: 78px; }
+}
+
+/* --- Respect prefers-reduced-motion (UX checklist) --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* --- Teacher gallery (точно по teacher_gallery_page.dart) --- */
+
+.dropdown-card {
+  background: white;
+  border-radius: 12px;
+  padding: 4px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dropdown-card-select {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 10px 0;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--kc-text-primary);
+}
+
+.white-card-shadow {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.teacher-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.teacher-photo-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.teacher-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.teacher-groups-list {
+  display: grid;
+  gap: 12px;
+}
+
+.teacher-groups-list .group-header-card {
+  margin-bottom: 0;
+}
+
+.teacher-photo-card {
+  cursor: pointer;
+}
+
+.teacher-gallery-empty {
+  margin-top: 12px;
+}
+
+.screen-title-padded {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.screen-title-padded h1 {
+  margin: 0;
+}
+
+.chat-search-input {
+  margin: 0 0 8px;
+  border-radius: 14px;
+}
+
+.chat-message-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chat-message-actions .btn-text {
+  padding: 0;
+  font-size: 11px;
+}
+
+.danger-text,
+.danger-button {
+  color: var(--kc-error);
+}
+
+.danger-button {
+  background: var(--kc-error);
+  color: white;
+}
+
+.settings-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  color: var(--kc-text-primary);
+}
+
+.settings-toggle-row + .settings-toggle-row {
+  border-top: 1px solid var(--kc-line);
+}
+
+.settings-toggle-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--kc-orange);
+}
+
+.notification-settings-card {
+  padding: 8px 16px;
+}
+
+.group-settings-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.group-settings-hero strong {
+  font-size: 18px;
+}
+
+.group-settings-hero .muted {
+  margin-top: 3px;
+}
+
+.settings-field-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--kc-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.group-settings-page .announcement-board {
+  margin-bottom: 14px;
+}
+
+.group-settings-save {
+  width: 100%;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+/* --- Dev role switcher (временный инструмент для разработки) --- */
+.dev-switcher-screen {
+  padding-top: 40px;
+}
+
+.dev-switcher-badge {
+  display: inline-block;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.dev-switcher-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dev-switcher-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border: 1px solid var(--tg-secondary-bg);
+  border-radius: 16px;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dev-switcher-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--role-color) 12%, white);
+  color: var(--role-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.dev-switcher-info {
+  flex: 1;
+}
+
+.dev-switcher-name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.dev-switcher-card > i:last-child {
+  color: var(--tg-hint);
+  font-size: 18px;
+}
+
+/* --- Login Screen (точно по login_screen.dart) ---
+   bgBeige фон, _FieldWrapper = белая карточка radius 24px + тень,
+   кнопка чёрная radius 24px, ошибка красная, заголовок 28px bold */
+
+.login-screen {
+  min-height: 100vh;
+  background: var(--kc-bg-beige);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+}
+
+.login-register-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.login-register-link {
+  background: none;
+  border: none;
+  color: var(--kc-orange);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--kc-dark);
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* _FieldWrapper из оригинала: белая карточка, radius 24px, мягкая тень */
+.field-wrapper {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.field-wrapper-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 16px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--kc-text-primary);
+}
+
+.field-wrapper-input::placeholder {
+  color: var(--kc-text-light);
+}
+
+.login-error {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+.login-btn {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.login-loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top-color: black;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.login-hint {
+  margin-top: 24px;
+  text-align: center;
+}

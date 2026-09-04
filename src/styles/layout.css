@@ -1,0 +1,206 @@
+.side-nav {
+  display: none;
+  flex-direction: column;
+  width: 240px;
+  height: 100vh;
+  background: var(--tg-bg);
+  border-right: 1px solid var(--tg-secondary-bg);
+  padding: 0;
+  flex-shrink: 0;
+  z-index: 20;
+  overflow-y: auto;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .side-nav {
+    display: flex;
+  }
+
+  .app-shell {
+    flex-direction: row;
+  }
+
+  .app-shell-content {
+    flex: 1;
+    padding-bottom: 0;
+    min-width: 0;
+  }
+}
+
+.side-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--tg-secondary-bg);
+  min-height: 64px;
+  flex-shrink: 0;
+}
+
+.side-nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.side-nav-logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--kc-primary);
+}
+
+.side-nav-items {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  flex: 1;
+}
+
+.side-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  color: var(--tg-text);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.side-nav-item i {
+  font-size: 20px;
+  color: var(--tg-hint);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.side-nav-label {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.side-nav-item:hover {
+  background-color: var(--tg-secondary-bg);
+}
+
+.side-nav-item.active {
+  background-color: color-mix(in srgb, var(--accent) 10%, white);
+  color: var(--accent);
+}
+
+.side-nav-item.active i {
+  color: var(--accent);
+}
+
+.side-nav-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px;
+  padding: 12px;
+  border-top: 1px solid var(--kc-line);
+}
+
+.side-nav-account-avatar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e6f2f4;
+  color: var(--kc-primary);
+  font-weight: 800;
+}
+
+.side-nav-account-copy {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.side-nav-account-copy strong,
+.side-nav-account-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.side-nav-account-copy strong { font-size: 12px; }
+.side-nav-account-copy span { color: var(--kc-text-secondary); font-size: 11px; }
+
+.side-nav-logout {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--kc-text-secondary);
+  cursor: pointer;
+}
+
+.side-nav-logout:hover {
+  background: #fbe7e2;
+  color: var(--kc-error);
+}
+
+.card {
+  background: var(--tg-secondary-bg);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-row:last-child {
+  border-bottom: none;
+}
+
+.card-label {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+/* --- Press feedback (UX guideline: Active States) ---
+   Применяется ко всем кнопкам и тапаемым карточкам сразу, чтобы
+   не дублировать transition/active в каждом отдельном классе. */
+button,
+.list-card,
+.child-list-item,
+.more-list-item {
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+button:active,
+.list-card:active,
+.child-list-item:active,
+.more-list-item:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+/* Поэлементные исключения, где scale на active неуместен
+   (растягивает фон или ломает позиционирование) */
+.bottom-nav-item:active,
+.photo-fav-btn:active,
+.photo-delete-btn:active {
+  transform: scale(0.85);
+}
+
+/* --- Header with actions --- */

@@ -1,0 +1,843 @@
+.screen-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.screen-header h1 {
+  margin: 0;
+  flex: 1;
+}
+
+.header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--tg-secondary-bg);
+  color: var(--tg-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.icon-btn.danger {
+  color: #e5484d;
+}
+
+/* --- Empty state --- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 60px 20px;
+  color: var(--tg-hint);
+}
+
+.empty-state i {
+  font-size: 64px;
+  margin-bottom: 8px;
+  color: var(--kc-text-light);
+}
+
+/* --- Photo grid --- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.photo-grid-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--tg-secondary-bg);
+}
+
+.photo-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  /* цвет управляется через inline style в PhotoGrid.jsx */
+}
+
+.photo-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+  font-size: 12px;
+}
+
+.photo-time {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* --- Photo viewer (lightbox) --- */
+.photo-viewer-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.photo-viewer-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.photo-viewer-close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.photo-viewer-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-viewer-nav-left {
+  left: 0;
+}
+
+.photo-viewer-nav-right {
+  right: 0;
+}
+
+/* --- FAB --- */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--tg-button);
+  color: var(--tg-button-text);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 5;
+}
+
+.fab-extended {
+  width: auto;
+  border-radius: 26px;
+  padding: 0 20px;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--tg-bg);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.modal-list {
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-scroll {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.text-input,
+.select-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 24px;
+  border: none;
+  background: white;
+  color: var(--kc-text-primary);
+  font-size: 15px;
+  margin: 10px 0;
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--tg-link);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--kc-text-primary);
+  border: none;
+  border-radius: 24px;
+  padding: 14px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+}
+
+.upload-label input {
+  display: none;
+}
+
+/* --- List card (albums list) --- */
+.list-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* --- Album picker rows --- */
+.picker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--tg-secondary-bg);
+}
+
+.picker-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.picker-id {
+  flex: 1;
+  font-size: 13px;
+  color: var(--tg-hint);
+}
+
+/* --- Upload widget --- */
+.upload-photo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-preview img {
+  width: 70%;
+  max-width: 220px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.upload-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload-actions > * {
+  width: 100%;
+  justify-content: center;
+}
+
+/* --- Group header card --- */
+.group-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tg-secondary-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.group-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.teacher-home-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 4px 18px;
+  color: var(--kc-text-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.teacher-menu-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  box-shadow: var(--kc-card-shadow);
+  cursor: pointer;
+}
+
+.group-header-name {
+  font-weight: 600;
+  margin: 0;
+}
+
+.group-header-count {
+  margin: 0;
+  color: var(--kc-text-secondary);
+  font-size: 11px;
+}
+
+.group-header-illustration {
+  display: grid;
+  width: 100px;
+  height: 70px;
+  place-items: end center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.group-header-bear::before {
+  content: '\1F43B';
+  display: block;
+  font-size: 64px;
+  line-height: 1;
+}
+
+.group-header-group {
+  font-weight: 500;
+  margin: 0;
+  font-size: 14px;
+}
+
+.group-header-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(234, 120, 74, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--kc-orange);
+  flex-shrink: 0;
+}
+
+/* --- Mini action cards --- */
+.mini-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mini-action-card {
+  height: 70px;
+  border: none;
+  border-radius: 12px;
+  background: var(--tg-secondary-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--tg-text);
+}
+
+.mini-action-card i {
+  font-size: 22px;
+  color: var(--tg-hint);
+}
+
+.mini-action-card span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* --- Welcome placeholder --- */
+.welcome-placeholder {
+  background: var(--tg-secondary-bg);
+  border-radius: 12px;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  color: var(--tg-hint);
+}
+
+.welcome-placeholder i {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.welcome-placeholder .card-label {
+  color: var(--tg-text);
+}
+
+/* --- Bottom sheet --- */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 60;
+}
+
+.sheet {
+  background: var(--tg-bg);
+  border-radius: 24px 24px 0 0;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sheet-handle {
+  width: 44px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--tg-hint);
+  opacity: 0.4;
+  margin: 10px auto 0;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.sheet-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(234, 120, 74, 0.14);
+  color: var(--kc-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.sheet-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sheet-actions {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px;
+}
+
+.action-chip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--kc-orange);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sheet-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+/* --- Child list item --- */
+.child-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--tg-secondary-bg);
+}
+
+.child-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(36, 129, 204, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--tg-link);
+  flex-shrink: 0;
+}
+
+.child-info {
+  flex: 1;
+}
+
+.child-name {
+  margin: 0;
+  font-weight: 500;
+}
+
+.child-checkbox input {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.child-chevron {
+  color: var(--tg-hint);
+  font-size: 16px;
+}
+
+/* --- Chat --- */
+.screen-flush {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  background: var(--kc-bg-beige);
+}
+
+.screen-title-padded {
+  padding: 20px 16px 8px;
+  margin: 0;
+}
+
+.chat-parent-select-wrap {
+  padding: 0 16px 8px;
+}
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-empty {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.chat-bubble-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chat-bubble-row.me {
+  justify-content: flex-end;
+}
+
+.chat-bubble {
+  max-width: 78%;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.chat-bubble-me {
+  background: #bee8f9;
+}
+
+.chat-bubble-other {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.chat-bubble-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.chat-bubble-time {
+  margin: 4px 0 0;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.54);
+  text-align: right;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 24px;
+  border: none;
+  background: white;
+  color: var(--kc-text-primary);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.chat-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--kc-orange);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* --- Schedule --- */
+.weekly-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.schedule-day-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--tg-secondary-bg);
+}
+
+.schedule-item i {
+  color: var(--tg-hint);
+  font-size: 16px;
+}
+
+.schedule-item-time {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--tg-hint);
+  min-width: 42px;
+}
+
+.schedule-item-subject {
+  font-size: 14px;
+}
+
+.notes-block {
+  margin-bottom: 20px;
+}
+
+.note-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.note-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(234, 120, 74, 0.12);
+  color: var(--kc-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.note-body {
+  flex: 1;
+}
+
+.note-text {
+  margin: 0 0 2px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.schedule-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.textarea-input {
+  resize: none;
+  font-family: inherit;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.schedule-weekly-btn {
+  margin-bottom: 16px;
+}
+
+/* --- Welcome screen --- */

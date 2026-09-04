@@ -1,0 +1,1205 @@
+/* ============================================================================
+  АДАПТИВНОСТЬ: Брейкпоинты для мобильных, планшетов и десктопов
+   ========================================================================== */
+
+/* --- Tablet: 640px и выше (iPad, большие телефоны) --- */
+@media (min-width: 640px) {
+  .screen {
+    padding: 24px;
+    max-width: 100%;
+  }
+
+
+  .admin-groups-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* PhotoGrid: 3 колонки на планшете */
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .teacher-photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .child-info-cards-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .mini-actions-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Modal: чуть больше */
+  .modal {
+    max-width: 400px;
+  }
+
+  /* Кнопки с лучшим spacing */
+  .welcome-btn {
+    max-width: 400px;
+  }
+
+  /* Welcome screen: увеличиваем иллюстрацию */
+  .welcome-illustration-wrap {
+    width: 320px;
+    height: 320px;
+  }
+
+  .welcome-illustration {
+    width: 260px;
+    height: 260px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+/* --- Desktop: 1024px и выше (ноутбуки, большие экраны) --- */
+@media (min-width: 1024px) {
+  /* App shell: скрываем bottom-nav, убираем padding-bottom */
+  .app-shell-content {
+    padding-bottom: 0;
+    background: var(--tg-bg);
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  /* Screen: центральная колонка с max-width, centred */
+  .screen {
+    padding: 32px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .admin-groups-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .screen-flush {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* PhotoGrid: 4-6 колонок на десктопе в зависимости от контента */
+  .photo-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .teacher-photo-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  /* Child profile: более широкий layout */
+  .child-info-cards-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .child-info-card {
+    padding: 20px;
+  }
+
+  .mini-actions-row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Modal: центральное окно, большего размера */
+  .modal {
+    max-width: 500px;
+    width: 90vw;
+  }
+
+  /* FAB: переместить выше из-за отсутствия bottom-nav */
+  .fab {
+    bottom: 40px;
+  }
+
+  /* Header: лучший spacing */
+  .screen-header {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  /* Welcome screen: larger, horizontal layout возможен */
+  .welcome-screen {
+    padding: 40px 32px;
+  }
+
+  .welcome-illustration-wrap {
+    width: 360px;
+    height: 360px;
+    margin: 32px 0 40px;
+  }
+
+  .welcome-illustration {
+    width: 300px;
+    height: 300px;
+  }
+
+  .welcome-btn {
+    max-width: 480px;
+  }
+
+  /* Login screen: wider form */
+  .login-screen {
+    align-items: center;
+    justify-content: center;
+    padding: 56px 32px;
+  }
+
+  .login-register-row {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    margin: 0;
+  }
+
+  .login-title {
+    width: min(100%, 420px);
+    margin-bottom: 28px;
+    font-size: 32px;
+  }
+
+  .login-form {
+    width: min(100%, 420px);
+    gap: 14px;
+  }
+
+  .field-wrapper-input {
+    min-height: 56px;
+    padding: 17px 20px;
+  }
+
+  .login-btn {
+    min-height: 56px;
+    margin-top: 14px;
+  }
+
+  .login-hint {
+    width: min(100%, 420px);
+    margin-top: 28px;
+  }
+
+  /* Chat: лучше использовать горизонтальное пространство */
+  .chat-bubble {
+    max-width: 60%;
+  }
+
+  /* Admin/teacher tables: скроллируемые карточки вместо full-width */
+  .card {
+    margin-bottom: 12px;
+  }
+
+  /* Grid layouts с большим gap на десктопе */
+  .child-info-section {
+    margin-bottom: 24px;
+  }
+}
+
+/* --- Large desktop: 1440px и выше --- */
+@media (min-width: 1440px) {
+  .screen {
+    max-width: 1200px;
+    padding: 40px 32px;
+  }
+
+  .screen-flush {
+    max-width: 1400px;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .teacher-photo-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .modal {
+    max-width: 600px;
+  }
+}
+
+/* --- Small mobile: < 360px (очень маленькие экраны) --- */
+@media (max-width: 359px) {
+  .screen {
+    padding: 16px 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .photo-grid {
+    gap: 8px;
+  }
+
+  /* Сжимаем иконки на очень маленьких экранах */
+  .bottom-nav-item i {
+    font-size: 20px;
+  }
+
+  .bottom-nav-item {
+    padding: 6px 2px 4px;
+    font-size: 10px;
+  }
+
+  .welcome-illustration-wrap {
+    width: 240px;
+    height: 240px;
+  }
+
+  .welcome-illustration {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* --- Tablet portrait: 640px - 1024px (оптимизация) --- */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .screen {
+    padding: 24px;
+  }
+
+  .modal {
+    max-width: 450px;
+  }
+
+  .chat-bubble {
+    max-width: 70%;
+  }
+}
+
+/* --- High DPI / Retina screens --- */
+@media (min-resolution: 2dppx) {
+  /* На Retina-дисплеях можно чуть тоньше border-radius, так как они более чёткие */
+  .card,
+  .modal,
+  .sheet,
+  .photo-grid-item {
+    border-radius: 16px;
+  }
+}
+
+/* --- Cidscomm desktop/mobile product surface --- */
+:root {
+  --kc-bg-beige: #f8f3e7;
+  --kc-surface-warm: #fffdf8;
+  --kc-line: #ebe4d8;
+  --kc-shadow: 0 8px 24px rgba(65, 55, 42, 0.07);
+}
+
+.app-shell,
+.app-shell-content,
+.screen-flush {
+  background: var(--kc-bg-beige);
+}
+
+.screen {
+  color: var(--kc-text-primary);
+}
+
+.screen > h1,
+.screen-header h1,
+.screen-title-padded {
+  color: var(--kc-dark);
+  font-weight: 800;
+}
+
+.card,
+.dropdown-card,
+.white-card-shadow,
+.group-header-card,
+.welcome-placeholder {
+  background: var(--kc-surface-warm);
+  border: 1px solid var(--kc-line);
+  box-shadow: var(--kc-shadow);
+}
+
+.card {
+  border-radius: 14px;
+}
+
+.group-header-card {
+  border-radius: 18px;
+  padding: 18px;
+  width: 100%;
+  border: 1px solid var(--kc-line);
+  color: var(--kc-text-primary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.side-nav {
+  background: var(--kc-surface-warm);
+  border-right-color: var(--kc-line);
+}
+
+.side-nav-header {
+  border-bottom-color: var(--kc-line);
+  justify-content: flex-start;
+  padding-left: 28px;
+}
+
+.side-nav-item {
+  margin: 3px 12px;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.side-nav-item.active {
+  background: color-mix(in srgb, var(--accent) 11%, var(--kc-surface-warm));
+  font-weight: 700;
+}
+
+.bottom-nav {
+  background: rgba(255, 253, 248, 0.96);
+  border-top-color: var(--kc-line);
+  box-shadow: 0 -8px 22px rgba(65, 55, 42, 0.08);
+}
+
+.bottom-nav-item {
+  min-height: 62px;
+  padding-top: 9px;
+  color: #a69f92;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+
+.bottom-nav-item.active i {
+  background: color-mix(in srgb, var(--accent) 13%, white);
+  border-radius: 10px;
+  padding: 3px 12px;
+}
+
+.child-profile-header {
+  background: var(--kc-primary);
+  border-radius: 0 0 28px 28px;
+}
+
+.child-profile-body {
+  padding-top: 58px;
+}
+
+.child-info-card {
+  background: var(--kc-surface-warm);
+  border-color: color-mix(in srgb, var(--ic-color) 35%, var(--kc-line));
+  box-shadow: var(--kc-shadow);
+}
+
+.photo-grid,
+.teacher-photo-grid {
+  gap: 10px;
+}
+
+.photo-grid-item,
+.teacher-photo-card {
+  border-radius: 12px;
+  box-shadow: var(--kc-shadow);
+}
+
+.weekly-schedule {
+  gap: 14px;
+}
+
+.schedule-day {
+  background: var(--kc-surface-warm);
+  border: 1px solid var(--kc-line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: var(--kc-shadow);
+}
+
+.schedule-day-title {
+  color: var(--kc-primary);
+  margin-bottom: 6px;
+}
+
+.schedule-item {
+  border-bottom-color: var(--kc-line);
+}
+
+.chat-messages {
+  background: var(--kc-bg-beige);
+}
+
+.chat-bubble {
+  border: 1px solid var(--kc-line);
+  box-shadow: 0 3px 10px rgba(65, 55, 42, 0.05);
+}
+
+.chat-bubble-me {
+  background: #dff1f3;
+  border-color: #c7e4e7;
+}
+
+.chat-input {
+  border: 1px solid var(--kc-line);
+  box-shadow: var(--kc-shadow);
+}
+
+.icon-btn {
+  background: var(--kc-surface-warm);
+  border: 1px solid var(--kc-line);
+  box-shadow: 0 3px 10px rgba(65, 55, 42, 0.05);
+}
+
+.btn-primary,
+.login-btn {
+  background: var(--kc-dark);
+}
+
+/* CDN icon fallback: keeps the navigation legible when the icon font is unavailable. */
+.ti {
+  font-family: Arial, sans-serif;
+  font-style: normal;
+}
+
+.ti-home::before { content: '\2302'; }
+.ti-user::before,
+.ti-user-circle::before { content: '\25C9'; }
+.ti-calendar::before,
+.ti-calendar-event::before,
+.ti-calendar-week::before { content: '\25A6'; }
+.ti-photo::before,
+.ti-album::before { content: '\25A3'; }
+.ti-message::before { content: '\2709'; }
+.ti-dots::before { content: '\22EF'; }
+.ti-users-group::before { content: '\2637'; }
+.ti-settings::before { content: '\2699'; }
+.ti-arrow-left::before { content: '\2190'; }
+.ti-chevron-right::before { content: '\203A'; }
+.ti-chevron-down::before { content: '\2304'; }
+.ti-plus::before { content: '+'; }
+.ti-trash::before { content: '\232B'; }
+.ti-heart::before { content: '\2665'; }
+.ti-paw::before { content: '\2726'; }
+.ti-clock::before { content: '\25F7'; }
+.ti-note::before { content: '\2637'; }
+.ti-send::before { content: '\27A4'; }
+.ti-circle-check::before { content: '\2713'; }
+.ti-ruler-2::before { content: '\2195'; }
+.ti-layout-dashboard::before { content: '\25A6'; }
+.ti-calendar-off::before { content: '\25A6'; }
+.ti-user-plus::before { content: '+'; }
+.ti-baby-carriage::before { content: '\263A'; }
+.ti-bell::before { content: '\266B'; }
+.ti-x::before { content: '\00D7'; }
+
+@media (max-width: 639px) {
+  .screen {
+    padding: 18px 16px 86px;
+  }
+
+  .screen-header {
+    margin-bottom: 14px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .child-profile-header {
+    height: 128px;
+  }
+
+  .child-profile-body {
+    padding-top: 76px;
+  }
+
+  .child-profile-name {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-shell-content {
+    background: var(--kc-bg-beige);
+  }
+
+  .screen {
+    max-width: 1040px;
+    padding: 36px 32px 48px;
+  }
+}
+
+/* --- Mobile visual language from the sadik Figma frames --- */
+:root {
+  --kc-bg-beige: #f7f1de;
+  --kc-surface: #ffffff;
+  --kc-text-primary: #2d2d2d;
+  --kc-text-secondary: #77736c;
+  --kc-text-light: #aaa59b;
+  --kc-orange: #f07b4f;
+  --kc-card-shadow: 0 4px 14px rgba(72, 61, 43, 0.08);
+}
+
+body,
+.app-shell,
+.app-shell.theme-beige {
+  background: var(--kc-bg-beige);
+}
+
+.app-shell-content {
+  background: transparent;
+}
+
+.screen {
+  background: transparent;
+  padding: 22px 16px 88px;
+}
+
+h1,
+.screen-header h1,
+.screen-title-padded {
+  color: var(--kc-text-primary);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.mini-action-card .mini-action-badge {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  display: grid;
+  min-width: 27px;
+  height: 27px;
+  place-items: center;
+  padding: 0 6px;
+  border-radius: 14px;
+  background: var(--kc-orange);
+  color: white;
+  font-size: 10px;
+  line-height: 1;
+}
+.teacher-home-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  margin-top: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--kc-line);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.72);
+  color: var(--kc-text-secondary);
+  font-size: 13px;
+}
+.teacher-home-hint i {
+  color: var(--kc-orange);
+  font-size: 19px;
+}
+
+.teacher-camera-fab {
+  right: 18px;
+  bottom: 22px;
+  background: var(--kc-surface);
+  color: var(--kc-dark);
+  box-shadow: 0 6px 20px rgba(65, 55, 42, 0.14);
+}
+
+.group-detail-screen {
+  min-height: 100vh;
+  background: var(--kc-bg-beige);
+  color: var(--kc-text-primary);
+}
+
+.app-shell:has(.group-detail-screen) .bottom-nav {
+  display: none;
+}
+
+.app-shell:has(.group-detail-screen) .app-shell-content {
+  padding-bottom: 0;
+}
+
+.group-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 16px 14px;
+}
+
+.group-detail-back,
+.group-detail-menu {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.group-detail-heading {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.group-detail-heading strong {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.group-detail-heading span {
+  color: var(--kc-text-secondary);
+  font-size: 12px;
+}
+
+.group-detail-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 9px;
+  border-radius: 14px;
+  background: var(--kc-dark);
+  color: white;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.group-detail-date i { font-size: 11px; }
+
+.group-detail-content {
+  padding: 0 16px 32px;
+}
+
+.announcement-board {
+  display: block;
+  width: 100%;
+  min-height: 92px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #aaa59b;
+  border-radius: 16px;
+  outline: none;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font: inherit;
+  font-size: 12px;
+}
+
+.announcement-board:focus { border-color: var(--kc-orange); }
+
+.attendance-count {
+  margin: 3px 8px 8px;
+  color: var(--kc-text-secondary);
+  font-size: 9px;
+}
+
+.group-children-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.group-children-list .child-list-item {
+  min-height: 54px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--kc-surface);
+}
+
+.group-children-list .child-list-item:active,
+.attendance-status button:active {
+  transform: none;
+  opacity: 1;
+}
+
+.group-children-list .child-list-item .child-name {
+  font-size: 12px;
+}
+
+.group-children-list .child-list-item .muted.small {
+  display: none;
+}
+
+.attendance-status {
+  display: block;
+  position: relative;
+  width: 92px;
+  flex-shrink: 0;
+}
+
+.attendance-status.is-open {
+  z-index: 10;
+}
+
+.attendance-status-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: 15px;
+  color: white;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.attendance-status-trigger i { font-size: 10px; }
+.attendance-status-present .attendance-status-trigger { background: var(--kc-orange); }
+.attendance-status-absent .attendance-status-trigger { background: var(--kc-dark); }
+.attendance-status-late .attendance-status-trigger { background: var(--kc-accent-yellow); color: var(--kc-dark); }
+
+.attendance-status-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  right: 0;
+  z-index: 5;
+  display: flex;
+  width: 92px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--kc-dark);
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(45, 45, 45, 0.12);
+}
+
+.attendance-status-menu button {
+  padding: 8px 5px;
+  border: 0;
+  border-bottom: 1px solid var(--kc-line);
+  background: white;
+  color: var(--kc-text-primary);
+  font: inherit;
+  font-size: 9px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: none;
+}
+
+.attendance-status-menu button:last-child { border-bottom: 0; }
+.attendance-status-menu button.selected { background: #f0ede6; font-weight: 700; }
+
+@media (min-width: 640px) {
+  .group-detail-content {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .group-detail-header {
+    max-width: 652px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .group-detail-screen {
+    width: min(100%, 980px);
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .teacher-home-topbar {
+    margin: 0 0 24px;
+    font-size: 16px;
+  }
+
+  .teacher-menu-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .group-header-card {
+    min-height: 170px;
+    padding: 28px 32px;
+    border-radius: 20px;
+  }
+
+  .group-header-name {
+    font-size: 22px;
+  }
+
+  .group-header-count,
+  .group-header-age {
+    font-size: 14px;
+  }
+
+  .group-header-illustration {
+    width: 180px;
+    height: 118px;
+  }
+
+  .group-header-bear::before {
+    font-size: 104px;
+  }
+
+  .mini-actions-row {
+    grid-template-columns: repeat(2, minmax(0, 240px));
+    justify-content: start;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .mini-action-card {
+    min-height: 104px;
+    height: auto;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .teacher-home-hint {
+    max-width: 496px;
+    margin-top: 24px;
+  }
+
+  .group-detail-header {
+    max-width: none;
+    padding: 32px 0 20px;
+  }
+
+  .group-detail-content {
+    max-width: none;
+    padding: 0 0 48px;
+  }
+
+  .announcement-board {
+    min-height: 116px;
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .attendance-count {
+    margin: 8px 12px 12px;
+    font-size: 12px;
+  }
+
+  .group-children-list {
+    gap: 8px;
+  }
+
+  .group-children-list .child-list-item {
+    min-height: 68px;
+    padding: 10px 14px;
+    border: 1px solid var(--kc-line);
+    box-shadow: var(--kc-card-shadow);
+  }
+
+  .group-children-list .child-list-item .child-name {
+    font-size: 14px;
+  }
+
+  .group-children-list .child-list-item .muted.small {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  .attendance-status,
+  .attendance-status-menu {
+    width: 132px;
+  }
+
+  .attendance-status-trigger,
+  .attendance-status-menu button {
+    font-size: 12px;
+  }
+
+  .teacher-photo-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .dropdown-card,
+  .white-card-shadow {
+    border-radius: 16px;
+    padding: 8px 18px;
+  }
+
+  .teacher-photo-card {
+    border-radius: 16px;
+  }
+
+  .screen-flush .chat-parent-select-wrap {
+    max-width: 420px;
+    margin: 0 0 18px;
+  }
+}
+
+.screen-header {
+  margin-bottom: 18px;
+}
+
+.card,
+.white-card-shadow,
+.dropdown-card,
+.group-header-card,
+.mini-action-card,
+.welcome-placeholder {
+  background: var(--kc-surface);
+  box-shadow: var(--kc-card-shadow);
+}
+
+.card {
+  border-radius: 16px;
+}
+
+.bottom-nav {
+  background: var(--kc-surface);
+  border-top: 0;
+  box-shadow: 0 -4px 16px rgba(72, 61, 43, 0.08);
+}
+
+.bottom-nav-item {
+  color: #9c978c;
+  padding: 9px 4px 7px;
+}
+
+.bottom-nav-item.active {
+  color: var(--accent);
+}
+
+.icon-btn {
+  background: var(--kc-surface);
+  box-shadow: var(--kc-card-shadow);
+}
+
+.photo-grid {
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.photo-grid-item,
+.teacher-photo-card {
+  border-radius: 12px;
+}
+
+.weekly-schedule {
+  gap: 12px;
+}
+
+.schedule-day {
+  background: var(--kc-surface);
+  border-radius: 16px;
+  box-shadow: var(--kc-card-shadow);
+  padding: 14px 16px;
+}
+
+.schedule-day-title {
+  color: var(--kc-text-primary);
+  margin-bottom: 6px;
+}
+
+.schedule-item {
+  border-bottom-color: #eee9dc;
+  padding: 10px 0;
+}
+
+.schedule-item:last-child {
+  border-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .weekly-schedule {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+  }
+
+  .schedule-day {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .weekly-schedule {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .schedule-day {
+    padding: 18px 20px;
+  }
+
+  .schedule-day-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .schedule-item {
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .schedule-item-subject {
+    font-size: 15px;
+  }
+}
+
+.group-header-card {
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.mini-actions-row {
+  gap: 10px;
+}
+
+.mini-action-card {
+  border-radius: 14px;
+  height: 76px;
+}
+
+.mini-action-card i,
+.group-header-avatar,
+.note-icon {
+  color: var(--kc-orange);
+}
+
+.chat-messages,
+.screen-flush {
+  background: var(--kc-bg-beige);
+}
+
+.chat-bubble {
+  border-radius: 16px 16px 16px 5px;
+  box-shadow: var(--kc-card-shadow);
+}
+
+.chat-bubble-me {
+  background: #bee8f9;
+  border-radius: 16px 16px 5px 16px;
+  box-shadow: none;
+}
+
+.chat-input-row {
+  background: var(--kc-bg-beige);
+}
+
+.chat-input {
+  box-shadow: var(--kc-card-shadow);
+}
+
+.more-list {
+  background: var(--kc-surface);
+  border-radius: 16px;
+  box-shadow: var(--kc-card-shadow);
+  padding: 4px 16px;
+}
+
+.more-list-item {
+  border-bottom-color: #eee9dc;
+}
+
+.child-info-section,
+.child-info-card {
+  box-shadow: var(--kc-card-shadow);
+}
+
+.child-profile-header {
+  background: var(--kc-orange);
+}
+
+.child-age-chip {
+  background: rgba(240, 123, 79, 0.14);
+  color: var(--kc-orange);
+}
+
+/* Teacher gallery group picker */
+.teacher-group-dropdown {
+  position: relative;
+  z-index: 4;
+  padding: 0 16px;
+}
+
+.teacher-group-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--kc-text-primary);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.teacher-group-dropdown-trigger i {
+  color: var(--kc-text-secondary);
+  font-size: 16px;
+  transition: transform 150ms ease;
+}
+
+.teacher-group-dropdown.is-open .teacher-group-dropdown-trigger i {
+  transform: rotate(180deg);
+}
+
+.teacher-group-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--kc-line);
+  border-radius: 12px;
+  background: var(--kc-surface);
+  box-shadow: 0 10px 24px rgba(65, 55, 42, 0.14);
+}
+
+.teacher-group-dropdown-menu button {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--kc-line);
+  background: transparent;
+  color: var(--kc-text-primary);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.teacher-group-dropdown-menu button:last-child { border-bottom: 0; }
+.teacher-group-dropdown-menu button:hover,
+.teacher-group-dropdown-menu button.selected { background: #f8eee5; }
+
+@media (min-width: 1024px) {
+  .screen {
+    padding-bottom: 40px;
+  }
+
+  .app-shell-content {
+    background: var(--kc-bg-beige);
+  }
+}
