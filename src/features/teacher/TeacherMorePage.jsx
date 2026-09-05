@@ -1,75 +1,83 @@
-// Аналог TeacherMorePage из teacher_more_page.dart.
+// Аналог TeacherMorePage / экран «Настройки» из Figma (sadik, фрейм 2146:655):
+// белые таблетки-строки с переключателями уведомлений/темы, языком и
+// действиями (выйти, поддержка, о нас). Профиль — доп. пункт, своего
+// экрана в Figma не имеет, но функциональность нужно куда-то оставить.
 
 import { useState } from 'react';
 import { useUser } from '../../shared/context/UserContext.jsx';
 import ProfileSettingsPage from '../../shared/components/ProfileSettingsPage.jsx';
 
-const ITEMS = [
-  { icon: 'ti-user', label: 'Профиль', key: 'profile' },
-  { icon: 'ti-bell', label: 'Уведомления', key: 'notifications' },
-  { icon: 'ti-help-circle', label: 'Поддержка', key: 'support' },
-];
-
 export default function TeacherMorePage() {
   const { logout } = useUser();
   const [openKey, setOpenKey] = useState(null);
+  const [notifications, setNotifications] = useState(false);
+  const [lightTheme, setLightTheme] = useState(true);
 
   if (openKey === 'profile') {
     return <ProfileSettingsPage onBack={() => setOpenKey(null)} />;
   }
 
-  if (openKey === 'notifications') {
+  if (openKey === 'support' || openKey === 'about') {
+    const isSupport = openKey === 'support';
     return (
       <div className="screen">
         <div className="screen-header">
           <button type="button" className="icon-btn" onClick={() => setOpenKey(null)} aria-label="Назад">
             <i className="ti ti-arrow-left" />
           </button>
-          <h1>Уведомления</h1>
+          <h1>{isSupport ? 'Поддержка' : 'О нас'}</h1>
         </div>
-        <div className="card notification-settings-card">
-          <div className="settings-toggle-row">
-            <span>Сообщения от родителей</span>
-            <input type="checkbox" defaultChecked />
-          </div>
-          <div className="settings-toggle-row">
-            <span>Напоминания о посещаемости</span>
-            <input type="checkbox" defaultChecked />
-          </div>
-          <p className="muted small">Настройки сохраняются для текущего устройства.</p>
-        </div>
+        <p className="muted">
+          {isSupport
+            ? 'По всем вопросам пишите на support@kidscomm.kg'
+            : 'Kidscomm — платформа для общения детского сада с родителями: расписание, посещаемость, чат и фотогалерея группы.'}
+        </p>
       </div>
     );
   }
 
   return (
     <div className="screen">
-      <h1>Ещё</h1>
-      <div className="more-list">
-        {ITEMS.map((item) => (
-          <button
-            key={item.key}
-            type="button"
-            className="more-list-item"
-            onClick={() => setOpenKey(item.key)}
-          >
-            <i className={`ti ${item.icon}`} aria-hidden="true" />
-            <span>{item.label}</span>
-            <i className="ti ti-chevron-right more-list-chevron" aria-hidden="true" />
-          </button>
-        ))}
-        <button type="button" className="more-list-item more-list-item-danger" onClick={logout}>
-          <i className="ti ti-logout" aria-hidden="true" />
-          <span>Выйти из аккаунта</span>
-          <i className="ti ti-chevron-right more-list-chevron" aria-hidden="true" />
+      <h1>Настройки</h1>
+      <div className="settings-list">
+        <label className="settings-row">
+          <span>Уведомление</span>
+          <span className="settings-switch">
+            <input type="checkbox" checked={notifications} onChange={(e) => setNotifications(e.target.checked)} />
+            <span className="settings-switch-track" aria-hidden="true" />
+          </span>
+        </label>
+
+        <label className="settings-row">
+          <span>Светлая тема</span>
+          <span className="settings-switch">
+            <input type="checkbox" checked={lightTheme} onChange={(e) => setLightTheme(e.target.checked)} />
+            <span className="settings-switch-track" aria-hidden="true" />
+          </span>
+        </label>
+
+        <div className="settings-row">
+          <span>Язык</span>
+          <span className="settings-lang">Ру. <i className="ti ti-chevron-down" aria-hidden="true" /></span>
+        </div>
+
+        <button type="button" className="settings-row settings-row-button" onClick={logout}>
+          <span>Выйти с аккаунта</span>
+        </button>
+
+        <button type="button" className="settings-row settings-row-button" onClick={() => setOpenKey('support')}>
+          <span>Поддержка</span>
+        </button>
+
+        <button type="button" className="settings-row settings-row-button" onClick={() => setOpenKey('about')}>
+          <span className="settings-link">О нас</span>
+        </button>
+
+        <button type="button" className="settings-row settings-row-button" onClick={() => setOpenKey('profile')}>
+          <span>Профиль</span>
+          <i className="ti ti-chevron-right" aria-hidden="true" />
         </button>
       </div>
-
-      {openKey === 'support' && (
-        <div className="card" style={{ marginTop: 12 }}>
-          <p className="muted">По всем вопросам пишите на support@kidscomm.app</p>
-        </div>
-      )}
     </div>
   );
 }

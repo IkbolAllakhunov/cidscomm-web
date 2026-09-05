@@ -23,7 +23,7 @@ const NAV_ITEMS = [
   { label: 'Галерея', icon: 'ti-photo', iconSrc: '/images/nav-gallery.svg' },
   { label: 'Сообщения', icon: 'ti-message', iconSrc: '/images/nav-messages.svg' },
   { label: 'Еда', icon: 'ti-bowl', iconSrc: '/images/nav-food.svg' },
-  { label: 'Ещё', icon: 'ti-dots', iconSrc: '/images/nav-settings.svg' },
+  { label: 'Настройки', icon: 'ti-dots', iconSrc: '/images/nav-settings.svg' },
 ];
 
 const PAGES = [TeacherGroupsPage, TeacherSchedulePage, CalendarPage, TeacherGalleryPage, TeacherMessagesPage, FoodPage, TeacherMorePage];
