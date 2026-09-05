@@ -1,8 +1,8 @@
-// Аналог LoginScreen из login_screen.dart. Точно по дизайну оригинала:
-// bgBeige фон, ссылка "Регистрация" оранжевая справа вверху,
-// заголовок "Вход" 28px по центру, два _FieldWrapper (белая карточка
-// radius 24px + тень), чёрная кнопка radius 24px, текст ошибки красный.
-// Вместо email/password принимает username/password из моков.
+// Аналог LoginScreen из login_screen.dart, сверено с макетом Figma (sadik,
+// фрейм "вход" 110:18): без ссылки на регистрацию — учителей и родителей
+// заводит админ, самостоятельной регистрации в системе нет. Поля с подписью
+// сверху и тонкой обводкой, чекбокс согласия с условиями, кнопка "Войти"
+// залита оранжевым.
 
 import { useState } from 'react';
 import { getUserByUsername } from '../../mock/repository.js';
@@ -10,6 +10,8 @@ import { getUserByUsername } from '../../mock/repository.js';
 export default function LoginScreen({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -38,34 +40,50 @@ export default function LoginScreen({ onLogin }) {
 
   return (
     <div className="login-screen">
-      <div className="login-register-row">
-        <button type="button" className="login-register-link">Регистрация</button>
-      </div>
-
       <h1 className="login-title">Вход</h1>
 
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className="field-wrapper">
+        <div className="field-group">
+          <label className="field-label" htmlFor="login-username">Номер</label>
           <input
-            className="field-wrapper-input"
+            id="login-username"
+            className="field-input"
             type="text"
-            placeholder="Почта"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
           />
         </div>
 
-        <div className="field-wrapper">
-          <input
-            className="field-wrapper-input"
-            type="password"
-            placeholder="Пароль"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
+        <div className="field-group">
+          <label className="field-label" htmlFor="login-password">Пароль</label>
+          <div className="field-input-wrap">
+            <input
+              id="login-password"
+              className="field-input"
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+            />
+            <button
+              type="button"
+              className="field-toggle-visibility"
+              onClick={() => setShowPassword((value) => !value)}
+              aria-label={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
+            >
+              <i className={`ti ${showPassword ? 'ti-eye' : 'ti-eye-off'}`} aria-hidden="true" />
+            </button>
+          </div>
         </div>
+
+        <label className="login-consent">
+          <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+          <span>
+            Я согласен с <span className="login-link">условиями</span> и{' '}
+            <span className="login-link">политикой конфиденциальности</span>
+          </span>
+        </label>
 
         {error && <p className="login-error">{error}</p>}
 
@@ -74,7 +92,7 @@ export default function LoginScreen({ onLogin }) {
             <div className="spinner" />
           </div>
         ) : (
-          <button type="submit" className="login-btn">Войти</button>
+          <button type="submit" className="login-btn" disabled={!agreed}>Войти</button>
         )}
       </form>
 

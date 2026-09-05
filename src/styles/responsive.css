@@ -164,13 +164,6 @@
     padding: 56px 32px;
   }
 
-  .login-register-row {
-    position: absolute;
-    top: 32px;
-    right: 40px;
-    margin: 0;
-  }
-
   .login-title {
     width: min(100%, 420px);
     margin-bottom: 28px;
@@ -179,12 +172,12 @@
 
   .login-form {
     width: min(100%, 420px);
-    gap: 14px;
+    gap: 16px;
   }
 
-  .field-wrapper-input {
-    min-height: 56px;
-    padding: 17px 20px;
+  .field-input {
+    height: 56px;
+    padding: 0 20px;
   }
 
   .login-btn {
@@ -490,6 +483,8 @@
 .ti-baby-carriage::before { content: '\263A'; }
 .ti-bell::before { content: '\266B'; }
 .ti-x::before { content: '\00D7'; }
+.ti-eye::before { content: '\1F441'; }
+.ti-eye-off::before { content: '\2298'; }
 
 @media (max-width: 639px) {
   .screen {
