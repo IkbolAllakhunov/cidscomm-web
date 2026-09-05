@@ -453,6 +453,7 @@
 .ti-chevron-left::before { content: '\2039'; }
 .ti-chevron-right::before { content: '\203A'; }
 .ti-chevron-down::before { content: '\2304'; }
+.ti-chevron-up::before { content: '\2303'; }
 .ti-plus::before { content: '+'; }
 .ti-trash::before { content: '\232B'; }
 .ti-heart::before { content: '\2665'; }

@@ -198,6 +198,162 @@
   font-weight: 600;
 }
 
+/* --- Teacher child profile (аналог экрана «Профиль ребенка» из Figma) --- */
+.child-profile-avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.child-profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--kc-surface-warm);
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  color: var(--kc-text-light);
+  box-shadow: var(--kc-card-shadow);
+}
+
+.child-profile-age {
+  margin: 0;
+  color: var(--kc-text-secondary);
+  font-size: 12px;
+  text-align: center;
+}
+
+.child-profile-section-title {
+  margin: 18px 6px 8px;
+  color: var(--kc-text-secondary);
+  font-size: 11px;
+}
+
+.child-profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.child-profile-row {
+  min-height: 48px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 20px;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font-size: 12px;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+}
+
+.child-profile-row small {
+  display: block;
+  margin-top: 2px;
+  color: var(--kc-text-secondary);
+  font-size: 9px;
+}
+
+.child-profile-row-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.child-profile-parent-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.child-profile-divider {
+  border: none;
+  border-top: 1px solid var(--kc-line);
+  margin: 4px 0;
+}
+
+.medical-card {
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font-size: 12px;
+}
+
+.medical-card-alert {
+  background: #8b2b21;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.medical-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 12px;
+  text-align: left;
+}
+
+button.medical-row {
+  cursor: pointer;
+}
+
+.medical-row-label {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.medical-card-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.medical-card-details p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.medical-row-link {
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.child-profile-notes-card {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: var(--kc-surface);
+  color: var(--kc-text-primary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.child-profile-notes-card p {
+  margin: 0 0 8px;
+}
+
+.child-profile-notes-card p:last-child {
+  margin-bottom: 0;
+}
+
 /* --- More page (list of settings, ListTile style) --- */
 .more-list {
   display: flex;
