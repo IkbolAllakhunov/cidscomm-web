@@ -7,6 +7,8 @@
 export default function WelcomeScreen({ onNext }) {
   return (
     <div className="welcome-screen">
+      <img src="/images/welcome_pattern.png" alt="" className="welcome-pattern" />
+
       <div className="welcome-header">
         <p className="welcome-title">
           Добро<br />пожаловать в
@@ -15,12 +17,11 @@ export default function WelcomeScreen({ onNext }) {
       </div>
 
       <div className="welcome-illustration-wrap">
-        <img src="/images/welcome_pattern.png" alt="" className="welcome-pattern" />
         <img src="/images/welcome_illustration.png" alt="Дети из детского сада" className="welcome-illustration" />
       </div>
 
       <button type="button" className="welcome-btn" onClick={onNext}>
-        Дальше
+        Вход
       </button>
     </div>
   );
