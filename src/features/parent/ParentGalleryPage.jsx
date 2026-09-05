@@ -6,8 +6,8 @@ import { useUser } from '../../shared/context/UserContext.jsx';
 import { getChildrenByParentId, getPhotosByGroupId, toggleFavorite } from '../../mock/repository.js';
 import PhotoViewer from '../../shared/components/PhotoViewer.jsx';
 import PhotoGrid from '../../shared/components/PhotoGrid.jsx';
-import ParentAlbumsPage from './ParentAlbumsPage.jsx';
-import FavoritePhotosPage from './FavoritePhotosPage.jsx';
+import AlbumsPage from '../../shared/components/AlbumsPage.jsx';
+import FavoritePhotosPage from '../../shared/components/FavoritePhotosPage.jsx';
 
 export default function ParentGalleryPage() {
   const { appUser } = useUser();
@@ -20,10 +20,10 @@ export default function ParentGalleryPage() {
   const photos = groupId ? getPhotosByGroupId(groupId) : [];
 
   if (view === 'albums') {
-    return <ParentAlbumsPage onBack={() => setView('grid')} />;
+    return <AlbumsPage onBack={() => setView('grid')} />;
   }
   if (view === 'favorites') {
-    return <FavoritePhotosPage onBack={() => setView('grid')} />;
+    return <FavoritePhotosPage groupId={groupId} onBack={() => setView('grid')} />;
   }
 
   function handleToggleFavorite(photoId) {

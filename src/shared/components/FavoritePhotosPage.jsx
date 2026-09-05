@@ -1,18 +1,17 @@
-// Аналог favorite_photos_page.dart.
+// Аналог favorite_photos_page.dart. groupId передаётся пропом — родитель
+// подставляет группу своего ребёнка, воспитатель — группу, которую смотрит.
 
 import { useState } from 'react';
-import { useUser } from '../../shared/context/UserContext.jsx';
-import PhotoViewer from '../../shared/components/PhotoViewer.jsx';
-import PhotoGrid from '../../shared/components/PhotoGrid.jsx';
-import { getPhotosByGroupId, getChildrenByParentId, toggleFavorite } from '../../mock/repository.js';
+import { useUser } from '../context/UserContext.jsx';
+import PhotoViewer from './PhotoViewer.jsx';
+import PhotoGrid from './PhotoGrid.jsx';
+import { getPhotosByGroupId, toggleFavorite } from '../../mock/repository.js';
 
-export default function FavoritePhotosPage({ onBack }) {
+export default function FavoritePhotosPage({ groupId, onBack }) {
   const { appUser } = useUser();
   const [viewerIndex, setViewerIndex] = useState(null);
   const [, forceRefresh] = useState(0);
 
-  const myChildren = getChildrenByParentId(appUser.id);
-  const groupId = myChildren[0]?.groupId;
   const allGroupPhotos = groupId ? getPhotosByGroupId(groupId) : [];
   const favoritePhotos = allGroupPhotos.filter((p) => p.favoriteBy.includes(appUser.id));
 

@@ -1,12 +1,13 @@
-// Аналог ParentAlbumsPage из parent_albums_page.dart.
+// Аналог ParentAlbumsPage из parent_albums_page.dart. Общий для родителя и
+// воспитателя — альбомы хранятся по appUser.id, ни от какой роли не зависят.
 // Список альбомов + диалог создания нового. Детали альбома — в AlbumDetailPage.
 
 import { useState } from 'react';
-import { useUser } from '../../shared/context/UserContext.jsx';
+import { useUser } from '../context/UserContext.jsx';
 import { getAlbumsForUser, addAlbum, deleteAlbum } from '../../mock/repository.js';
 import AlbumDetailPage from './AlbumDetailPage.jsx';
 
-export default function ParentAlbumsPage({ onBack }) {
+export default function AlbumsPage({ onBack }) {
   const { appUser } = useUser();
   const [, forceRefresh] = useState(0);
   const [showCreate, setShowCreate] = useState(false);

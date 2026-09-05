@@ -206,8 +206,7 @@ button:active,
 /* Поэлементные исключения, где scale на active неуместен
    (растягивает фон или ломает позиционирование) */
 .bottom-nav-item:active,
-.photo-fav-btn:active,
-.photo-delete-btn:active {
+.photo-fav-btn:active {
   transform: scale(0.85);
 }
 

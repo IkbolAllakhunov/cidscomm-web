@@ -1,9 +1,9 @@
 // Аналог AlbumDetailPage из parent_albums_page.dart.
 
 import { useState } from 'react';
-import { useUser } from '../../shared/context/UserContext.jsx';
+import { useUser } from '../context/UserContext.jsx';
 import { getAllPhotos, addPhotoToAlbum } from '../../mock/repository.js';
-import PhotoViewer from '../../shared/components/PhotoViewer.jsx';
+import PhotoViewer from './PhotoViewer.jsx';
 
 export default function AlbumDetailPage({ album, onBack, onChanged }) {
   const { appUser } = useUser();
